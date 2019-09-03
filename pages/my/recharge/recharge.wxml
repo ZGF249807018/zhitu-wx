@@ -1,0 +1,19 @@
+<view class="recharge">
+  <view class="recharge-header">
+    <view>充值金额</view>
+    <view>
+      ￥ 
+      <input type="number" bindblur='rechangemoney'  value="{{ money }}" placeholder="请输入你要充值的金额" placeholder-class="pla" />
+    </view>
+  </view>
+  <view class="recharge-line"></view>
+  <view class="recharge-bottom">
+    <view>其他金额</view>
+     <view>
+        <view class="{{ i ===index ? 'action' : ''}}" wx:for="{{ moneyList }}" bindtap="toggleMoney" data-i="{{ index }}" wx:key="key">{{ item.text }}</view>
+     </view>
+  </view>
+  <view class="recharge-btn">
+     <button type="default" bindtap="defaultTap">确定充值</button>
+  </view>
+</view>

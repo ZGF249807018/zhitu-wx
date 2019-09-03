@@ -1,0 +1,16 @@
+<view class='chance-contact'>
+  <view class='inputcont inputcont-second'>
+    <input bindinput="getEmail" placeholder='请输入新的邮箱' value='{{inputcontentemail}}' placeholder-class="placeholderStyle"></input>
+  </view>
+  <view class='inputbord'>
+    <view></view>
+  </view>
+  <view class='inputcont inputcont-second'>
+    <input bindinput="getEmailCode" placeholder='请输入验证码' value='{{inputcontentpassword}}' placeholder-class="placeholderStyle"></input>
+    <view class="input-right-text" wx:if="{{counts !=0 }}">{{counts}}秒重新获取</view>
+    <view class="input-right-icon" wx:if="{{counts == 0}}" bindtap='getpassword'>获取验证码</view>
+  </view>
+  <view class='ok'>
+    <view bindtap='submit'>确定</view>
+  </view>
+</view>

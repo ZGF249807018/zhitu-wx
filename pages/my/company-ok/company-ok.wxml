@@ -1,0 +1,53 @@
+<view class='chance-contact'>
+  <view class='inputcont inputcont-second'>
+    <input bindinput="getCompanyName" placeholder='请输入与营业执照一致的企业名称' value='{{company.companyname}}' placeholder-class="placeholderStyle"></input>
+  </view>
+  <view class='inputbord'>
+    <view></view>
+  </view>
+  <view class='inputcont inputcont-second'>
+    <input bindinput="getCompanyNum" placeholder='请输入统一社会信用代码' value='{{company.companynum}}' placeholder-class="placeholderStyle" maxlength='18'></input>
+  </view>
+  <view class='inputbord'>
+    <view></view>
+  </view>
+  <view class='inputcont inputcont-second'>
+    <input bindinput="getContactName" placeholder='请输入企业联系人姓名' value='{{company.contactName}}' placeholder-class="placeholderStyle"></input>
+  </view>
+  <view class='inputbord'>
+    <view></view>
+  </view>
+  <view class='inputcont inputcont-second'>
+    <input bindinput="getCompanyAddress" placeholder='请输入企业办公地址' value='{{company.companyaddress}}' placeholder-class="placeholderStyle"></input>
+  </view>
+  <view class='inputbord'>
+    <view></view>
+  </view>
+  <view class='inputcont inputcont-second'>
+    <input bindinput="getEmail" placeholder='请输入企业邮箱' value='{{company.email}}' placeholder-class="placeholderStyle"></input>
+  </view>
+  <view class='inputcont upimg'>
+    <view>上传营业执照</view>
+    <view class='exmple-name' bindtap="exmpleCompany">示例</view>
+    <view class='addpicture'>
+      <view class='oldpicture' bindtap='addpicture' wx:if="{{companypicture}}">
+        <image class='companyImage' src="{{imageUrl}}up-come.png"></image>
+        <view>添加图片，请保证图片清晰可见</view>
+      </view>
+      <view class="newpicture" wx:if="{{!companypicture}}" bindtap="addpicture">
+        <image src="{{shoppicture}}"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class='ok'>
+    <view bindtap='submit'>提交</view>
+  </view>
+
+  <view class='popUp' bindtap='closepopUp' wx:if="{{tapShow}}">
+    <view class='popUpShadow'></view>
+    <view class='popUpcontent'>
+      <image src="{{imageUrl}}companyCert.jpg"></image>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,16 @@
+<view class="jobWantedTable">
+  <view class="jobWantedTable-code">
+    <view class="jobWantedTable-code-child" style="background-image:url({{imageUrl}}qiuzhi.png)">
+      <view>求职登记表二维码</view>
+      <view>
+        <image  src="{{code}}" lazy-load="true" bindtap="jumpFrom"/>
+      </view>
+    </view>
+  </view>
+  <view class="jobWantedTable-instructions">
+    <view>如何使用</view>
+    <view>
+      <text>{{ text }}</text>
+    </view>
+  </view>
+</view>

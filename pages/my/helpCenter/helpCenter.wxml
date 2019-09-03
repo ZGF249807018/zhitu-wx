@@ -1,0 +1,23 @@
+<view class="helpCenter">
+  <view class="helpCenter-header">
+    <view>
+      <image src="{{ https + 'add-select-phone-icon.png'}}" mode="scaleToFill" />
+      <text>0571-89020021</text>
+    </view>
+    <view>7*24小时技术支持</view>
+  </view>
+  <!-- <view class="helpCenter-line"></view> -->
+  <view class="helpCenter-content">
+    <view class="helpCenter-content-list" wx:for="{{ helpCenterList }}" bindtap="openDetail" data-i="{{ index }}" wx:key="key">
+      <view>
+        <view>{{ item.text }}</view>
+        <image src="{{ item.image }}" mode="scaleToFill" />
+      </view>
+      <view wx:if="{{ (i[index] && i[index] === index) || i[index] === 0 }}">
+        <view class="helpCenter-content-list-content" wx:for="{{ item.content }}" wx:key="key">
+            {{ item }}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

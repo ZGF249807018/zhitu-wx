@@ -1,0 +1,186 @@
+<view class="jobWantedTbale">
+  <view class="jobWantedTbale-messageTitle">基本信息</view>
+  <view class="jobWantedTbale-message">
+    <view class="jobWantedTbale-message-child message-table">
+      <view>姓名</view>
+      <view>{{ userList.name||" " }}</view>
+      <view>性别</view>
+      <view>{{ userList.sex|| " " }}</view>
+      <view>籍贯</view>
+      <view>{{ userList.nativeAddress || " "}}</view>
+      <view>户籍性质</view>
+      <view>{{ 
+                 userList.nativeNature === 1 ? '本地城镇' :
+                 userList.nativeNature === 2 ? '外地城镇（省内）' :
+                 userList.nativeNature === 3 ? '外地城镇（省外）' :
+                 userList.nativeNature === 4 ? '本地农村' :
+                 userList.nativeNature === 5 ? '外地农村（省内）' :
+                 userList.nativeNature === 6 ? '外地农村（省外）' : ''
+              }}</view>
+    </view>
+    <view class="jobWantedTbale-message-child message-table">
+      <view>出生日期</view>
+      <view>{{ userList.birthday || " "}}</view>
+      <view>婚姻状况</view>
+      <view>{{ userList.maritalStatus  ||" "}}</view>
+      <view>政治面貌</view>
+      <view>{{ userList.politicalStatus === 1 ? '团员' :
+                userList.politicalStatus === 2 ? '党员 ' :
+                userList.politicalStatus === 3 ? '群众' : '' }}</view>
+      <view>最高学历</view>
+      <view>{{ userList.highestEducation||"" }}</view>
+    </view>
+    <view class="jobWantedTbale-message-child message-table">
+      <view>工作年限</view>
+      <view>{{ userList.workingNum === 1 ? "1-3年" :
+            userList.workingNum === 2 ? "3-5年" :
+            userList.workingNum === 3 ? "5-10年" :
+            userList.workingNum === 4 ? "10年" : "" }}</view>
+      <view>应聘岗位</view>
+      <view>{{ userList.position  || " "}}</view>
+      <view>当前薪资</view>
+      <view>{{ userList.currentSalary || " " }}</view>
+      <view>期望薪资</view>
+      <view>{{ userList.expectedSalary ||" " }}</view>
+    </view>
+    <view class="jobWantedTbale-message-child message-table message-table-q">
+      <view>手机号码</view>
+      <view>{{ userList.mobile || " " }}</view>
+      <view>邮箱</view>
+      <view>{{ userList.email || " "}}</view>
+      <view>身份证号</view>
+      <view>{{ userList.idCard || " " }}</view>
+    </view>
+    <view class="jobWantedTbale-message-child message-table message-table-q">
+      <view>当前状态</view>
+      <view>{{  userList.currentState===1 ? "应届毕业生" :
+             userList.currentState===2 ? "已离职" :
+             userList.currentState===3 ? "在职" :
+             userList.currentState===4 ? "其他" : "" }}</view>
+      <view>到岗时间</view>
+      <view>{{ userList.arrivalTime || " " }}</view>
+      <view>现居地址</view>
+      <view>{{ userList.currentAddress || " " }}</view>
+    </view>
+  </view>
+  <view class="plusLine"></view>
+  <view class="jobWantedTbale-messageTitle">紧急联系人</view>
+  <view class="jobWantedTbale-lianxiren">
+    <view>紧急联系姓名</view>
+    <view>{{ userList.contact  || " "}}</view>
+    <view>联系方式</view>
+    <view>{{ userList.contactMobile || " "}}</view>
+    <view>与本人关系</view>
+    <view>{{ userList.relation || " "}}</view>
+  </view>
+  <view class="plusLine"></view>
+  <view class="jobWantedTbale-messageTitle">教育/培训经历</view>
+  <view class="jobWantedTbale-jiaoyu">
+    <view class="jobWantedTbale-jiaoyu-line">
+      <view class="jobWantedTbale-jiaoyu-line-child">学校/培训机构</view>
+      <view class="jobWantedTbale-jiaoyu-line-child">学历/培训证书</view>
+      <view class="jobWantedTbale-jiaoyu-line-child">专业</view>
+      <view class="jobWantedTbale-jiaoyu-line-child">开始时间</view>
+      <view class="jobWantedTbale-jiaoyu-line-child">结束时间</view>
+    </view>
+    <view class="jobWantedTbale-jiaoyu-line" wx:for="{{ userList.educationInfoVOS }}" wx:key="{{ item.id }}">
+      <view class="jobWantedTbale-jiaoyu-line-child">{{ item.university || " " }}</view>
+      <view class="jobWantedTbale-jiaoyu-line-child">{{ item.degree  || " "}}</view>
+      <view class="jobWantedTbale-jiaoyu-line-child">{{ item.major || " " }}</view>
+      <view class="jobWantedTbale-jiaoyu-line-child">{{ item.startTime || " "}}</view>
+      <view class="jobWantedTbale-jiaoyu-line-child">{{ item.endTime  || " "}}</view>
+    </view>
+  </view>
+  <view class="plusLine"></view>
+  <view class="jobWantedTbale-messageTitle">工作经历(从最近一份填起)</view>
+  <view class="jobWantedTbale-post">
+    <view class="jobWantedTbale-post-line">
+      <view class="jobWantedTbale-post-line-child">公司名称</view>
+      <view class="jobWantedTbale-post-line-child">工作岗位</view>
+      <view class="jobWantedTbale-post-line-child">在职时间</view>
+      <view class="jobWantedTbale-post-line-child">离职原因</view>
+      <view class="jobWantedTbale-post-line-child">证明人</view>
+      <view class="jobWantedTbale-post-line-child">证明人关系</view>
+      <view class="jobWantedTbale-post-line-child">证明人电话</view>
+    </view>
+    <view class="jobWantedTbale-post-line" wx:for="{{ userList.workInfoVOS }}" wx:key="{{ item.id }}">
+      <view class="jobWantedTbale-post-line-child">{{ item.company || " " }}</view>
+      <view class="jobWantedTbale-post-line-child">{{ item.position || " " }}</view>
+      <view class="jobWantedTbale-post-line-child">{{( item.startTime || '' ) + "-" +  (item.endTime || '') }}</view>
+      <view class="jobWantedTbale-post-line-child">{{ item.reason || " " }}</view>
+      <view class="jobWantedTbale-post-line-child">{{ item.witness  || " "}}</view>
+      <view class="jobWantedTbale-post-line-child">{{ item.relation || " " }}</view>
+      <view class="jobWantedTbale-post-line-child">{{ item.witnessMobile || " "}}</view>
+    </view>
+  </view>
+  <view class="plusLine"></view>
+  <view class="jobWantedTbale-messageTitle">本人声明</view>
+  <view class="jobWantedTbale-shengming">
+    <view class="jobWantedTbale-shengming-top">
+      本人保证所填写的表格每一项内容真实，如因信息不完整、虚假信息等造成应聘失败、辞退等一切后果、本人自行承担。
+    </view>
+    <view class="jobWantedTbale-shengming-bottom">
+      <view class="jobWantedTbale-shengming-bottom-left">
+        <view>签名：</view>
+        <view><image wx:if="{{userList.signaturePicUrl }}" src="{{ images +'/'+ userList.signaturePicUrl }}" /></view>
+      </view>
+      <view class="jobWantedTbale-shengming-bottom-right">
+        <view>日期：</view>
+        <view>{{ userList.signatureTime||"" }}</view>
+      </view>
+    </view>
+  </view>
+  <view class="jobWantedTbale-button">
+    <view bindtap="sendMessage">更新</view>
+    <view bindtap="sendEmail">发送到邮箱</view>
+    <view bindtap="printTable">打印表格</view>
+  </view>
+</view>
+<view class="modal" wx:if="{{ modalOpened }}">
+  <view class="modal-child">
+    <view>
+      <view class="modal-hader">{{modal.header}}</view>
+      <view class="modal-content">{{modal.content}}</view>
+      <view class="modal-btn">
+        <view bindtap="onModalClose">{{modal.buttonone}}</view>
+        <view bindtap="onModalClick">{{modal.buttontwo}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='modal-bottom' wx:if="{{modalbottom}}">
+  <view></view>
+  <view>
+    <view class='modal-bottom-header'>发送到邮箱</view>
+    <view class='modal-bottom-center'>
+      <view>收件人</view>
+      <view>{{ tenantList.email||" " }}</view>
+    </view>
+    <view class='modal-bottom-bottom'>
+      <view bindtap='cancelemailaddress'>取消</view>
+      <view bindtap='sendemailaddress'>发送</view>
+    </view>
+  </view>
+</view>
+<view class='modal-bottom' wx:if="{{modalbottomprint}}">
+  <view></view>
+  <view>
+    <view class='modal-bottom-header'>打印表格
+         <view class='print'>
+           选择打印机  >
+         </view>
+    </view>
+    <view class='modal-bottom-center'>
+      <view>{{print.num}}份</view>
+      <view class='increase'>
+           <view><image src="{{ https +'Print-less@1x.png' }}" bindtap='reduce'></image></view>
+           <text>{{print.num}}</text>
+           <view><image src="{{ https +'Print-increase@1x.png' }}" bindtap='increasenum'></image></view>
+      </view>
+    </view>
+    <view class='modal-bottom-bottom'>
+      <view bindtap='cancelemailaddress' bindtap='cancel'>取消</view>
+      <view bindtap='sendemailaddress' bindtap='print'>打印</view>
+    </view>
+  </view>
+</view>

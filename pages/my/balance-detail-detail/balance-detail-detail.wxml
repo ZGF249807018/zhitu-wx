@@ -1,0 +1,32 @@
+<view class="moneyDetail">
+  <view class="moneyDetail-header">
+    <text>{{ list.typeName }}</text>
+    <text>{{ list.amount }}</text>
+  </view>
+  <view class="moneyDetail-content">
+    <view>
+      <text>流水号</text>
+      <text>{{ list.tradeNo }}</text>
+    </view>
+    <view>
+      <text>类型</text>
+      <text>{{ list.typeName }}</text>
+    </view>
+    <view>
+      <text>时间</text>
+      <text>{{ list.createDate }}</text>
+    </view>
+    <view>
+      <text>支付方式</text>
+      <text>{{ list.payTypeName }}</text>
+    </view>
+    <view>
+      <text>余额</text>
+      <text>{{ list.balance }}</text>
+    </view>
+    <view>
+      <text>备注</text>
+      <text>{{ list.typeName + "-" +  list.payTypeName  }}</text>
+    </view>
+  </view>
+</view>

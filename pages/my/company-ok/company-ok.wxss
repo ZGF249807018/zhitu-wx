@@ -1,0 +1,170 @@
+.chance-contact {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #f5f5f5;
+}
+
+.inputcont {
+  height: 100rpx;
+  background: white;
+  margin-top: 20rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #333;
+  position: relative;
+}
+
+.ok {
+  margin-top: 149rpx;
+}
+
+.ok>view {
+  width: 550rpx;
+  height: 88rpx;
+  margin: 0 auto;
+  line-height: 88rpx;
+  background: rgba(45, 160, 244, 1);
+  box-shadow: 0px 10rpx 30rpx 0rpx rgba(45, 160, 244, 0.3);
+  border-radius: 44rpx;
+  text-align: center;
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: white;
+}
+
+.chance-contact-head {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #333;
+}
+
+.chance-contact-head>text:nth-of-type(2) {
+  display: inline-block;
+  margin-left: 20rpx;
+}
+
+.inputcont-second {
+  position: relative;
+  margin-top: 0;
+}
+
+.inputbord {
+  padding: 0 30rpx;
+}
+
+.inputbord>view {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.inputcont-second>text {
+  position: absolute;
+  z-index: 5;
+  top: 29rpx;
+  right: 30rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(45, 160, 244, 1);
+}
+
+.upimg {
+  height: 480rpx;
+  position: relative;
+}
+
+.exmple-name {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(45, 160, 244, 1);
+}
+
+.addpicture {
+  margin-top: 20rpx;
+  border: 1px dotted #c3c3c3;
+  height: 360rpx;
+}
+
+.upimg>view:nth-of-type(1) {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #a3a3a3;
+}
+
+.placeholderStyle {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #a3a3a3;
+}
+
+.oldpicture>image {
+  display: block;
+  margin: 0 auto;
+  width: 100rpx;
+  height: 100rpx;
+  margin-top: 90rpx;
+}
+
+.oldpicture>view {
+  text-align: center;
+  margin-top: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #8e8e8e;
+}
+.newpicture{
+  position: relative;
+}
+.newpicture>image{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 360rpx;
+}
+.popUp{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+.popUpShadow{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  opacity: 0.6;
+  background: #333
+}
+.popUpcontent{
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%)
+}
+.popUpcontent image{
+  width: 400rpx;
+  
+}
+.companyImage{
+width: 100rpx;
+height: 100rpx;
+}

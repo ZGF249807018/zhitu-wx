@@ -1,0 +1,84 @@
+{
+  "pages": [
+    "pages/index/index/index",
+    "pages/login/login/login",
+    "pages/login/login-phone/login-phone",
+    "pages/login/forget-password/forget-password",
+    "pages/login/set-password/set-password",
+    "pages/login/registration-perfect/registration-perfect",
+    "pages/login/registration/registration",
+    "pages/index/navigation/postInvite/postInvite",
+    "pages/index/meal-list/meal-list",
+    "pages/index/navigation/nullPage/nullPage",
+    "pages/index/add-candidate/add-candidate",
+    "pages/index/navigation/jobWantedTable/jobWantedTable",
+    "pages/index/back-tune/back-tune",
+    "pages/report/report",
+    "pages/talentPool/jobWantedTbale/jobWantedTbale",
+    "pages/presentation/index/index",
+    "pages/talentPool/index/index",
+    "pages/my/my/my",
+    "pages/my/seting/seting",
+    "pages/my/coupons/coupons",
+    "pages/my/use-coupon/use-coupon",
+    "pages/my/recharge/recharge",
+    "pages/my/balance/balance",
+    "pages/my/basicmessage/basicmessage",
+    "pages/my/balance-detail/balance-detail",
+    "pages/my/helpCenter/helpCenter",
+    "pages/my/order-detail/order-detail",
+    "pages/my/company-ok/company-ok",
+    "pages/my/chance-email/chance-email",
+    "pages/my/chance-phone/chance-phone",
+    "pages/my/chance-contact/chance-contact",
+    "pages/my/balance-detail-detail/balance-detail-detail",
+    "pages/my/set-login-password/set-login-password",
+    "pages/my/set-pay-password/set-pay-password",
+    "pages/my/bindemail/bindemail",
+    "pages/my/aboutOurs/aboutOurs",
+    "pages/index/navigation/backResult/backResult",
+    "pages/login/agreement/agreement",
+    "pages/my/header/header"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "职兔",
+    "navigationBarBackgroundColor": "#2DA0F4",
+    "backgroundColor": "#F8F8F8",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#A3A3A3",
+    "selectedColor": "#2DA0F4",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index/index",
+        "iconPath": "static/imgs/tabs/index-onclick.png",
+        "selectedIconPath": "static/imgs/tabs/index-click.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/talentPool/index/index",
+        "iconPath": "static/imgs/tabs/talentPool-onclick.png",
+        "selectedIconPath": "static/imgs/tabs/talentPool-click.png",
+        "text": "人才库"
+      },
+      {
+        "pagePath": "pages/presentation/index/index",
+        "iconPath": "static/imgs/tabs/presentation-tabs-onclick.png",
+        "selectedIconPath": "static/imgs/tabs/presentation-tabs-click.png",
+        "text": "报告"
+      },
+      {
+        "pagePath": "pages/my/my/my",
+        "iconPath": "static/imgs/tabs/my-onclick.png",
+        "selectedIconPath": "static/imgs/tabs/my-click.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

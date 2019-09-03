@@ -1,0 +1,21 @@
+<view class="balanceDetail">
+  <view id="list" bindtap="toDetail" data-i="{{ index }}">
+    <view class="balanceDetail-list" wx:for="{{ balanceDetailList }}" bindtap='toDetail' data-item="{{ item }}" wx:for-item="item" wx:key="key">
+        <view class="balanceDetail-list-top" data-item="{{ item }}">
+          <text data-item="{{ item }}">{{ item.typeName }}</text>
+          <text data-item="{{ item }}">{{ item.createDate }}</text>
+        </view>
+        <view class="balanceDetail-list-bottom" data-item="{{ item }}">
+          <text data-item="{{ item }}">余额：{{ item.balance||0}}</text>
+          <text data-item="{{ item }}">{{ item.typeName === "消费" ? "-" : "+"}}{{ item.amount }}</text>
+        </view>
+    </view>
+  </view>
+  <view class="balanceDetail-pla"></view>
+  <view class="balanceDetail-bottom" wx:if= "{{ bottomShow }}">
+    <view>
+      <image src="{{ https + 'To-load.png'}}" mode="scaleToFill" />
+      <text>{{ bottomText }}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,73 @@
+<view class="content">
+  <view class="uni-padding-wrap">
+    <view class="page-section swiper">
+      <view class="page-section-spacing">
+        <swiper class="_swiper  swiper" indicator-dots="{{indicatorDots}}" indicator-color="0,0,0,.5" indicator-active-color="#FFFFFF" autoplay="{{autoplay}}" interval="{{interval}}" circular="true" duration="{{duration}}">
+          <swiper-item class="_swiper-item ">
+            <view class="swiper-item uni-bg-red">
+              <image src="{{imageUrl}}banner1.png" mode="aspectFit" class="_image "></image>
+            </view>
+          </swiper-item>
+          <swiper-item class="_swiper-item ">
+            <view class="  swiper-item uni-bg-green">
+              <image src="{{imageUrl}}banner2.png" mode="aspectFit" class="_image "></image>
+            </view>
+          </swiper-item>
+          <swiper-item class="_swiper-item ">
+            <view class="  swiper-item uni-bg-blue">
+              <image src="{{imageUrl}}banner3.png" mode="aspectFit" class="_image "></image>
+            </view>
+          </swiper-item>
+        </swiper>
+      </view>
+    </view>
+  </view>
+  <view class="  noticeBar" wx:if="{{!token}}" bindtap='enterRegistration'>
+    <image class="_image  noticeBar-icon" src="{{imageUrl}}noticeBar-icon.png" mode="widthFix"></image>
+    <text class="_text ">新用户注册专享388元大礼包，你来我就送！</text>
+  </view>
+  <view class="  bj-f5"></view>
+  <view class="  grid-nav flex-wrp">
+    <view class="  nav-item flex-item" bindtap='enterbacktunes'>
+      <image src="{{imageUrl}}no-back-tune-icon.png" mode="widthFix" class="_image "></image>
+      <text class="_text ">去背调</text>
+    </view>
+    <view class="  nav-item flex-item" bindtap='enterreport'>
+      <image src="{{imageUrl}}report-sample-icon.png" mode="widthFix" class="_image "></image>
+      <text class="_text ">报告样例</text>
+    </view>
+    <view class="  nav-item flex-item" bindtap='enterpostInvite'>
+      <image src="{{imageUrl}}job-invitation-icon.png" mode="widthFix" class="_image "></image>
+      <text class="_text ">职邀</text>
+    </view>
+    <view class="  nav-item flex-item" bindtap='enterjobWantedTable'>
+      <image src="{{imageUrl}}job-icon.png" mode="widthFix" class="_image "></image>
+      <text class="_text ">求职表</text>
+    </view>
+    <view class="  nav-item flex-item" bindtap='enterblock'>
+      <image src="{{imageUrl}}back-tune-icon.png" mode="widthFix" class="_image "></image>
+      <text class="_text ">背调流程</text>
+    </view>
+  </view>
+  <view class="  bj-f5"></view>
+  <view class="  meal">
+    <text class="_text  meal-title">背调套餐</text>
+
+    <view class="  meal-item" wx:key="key" wx:for="{{mealItems}}">
+      <view class="  meal-item-left">
+        <view class="  meal-item-title" bindtap="openDesc" data-i="{{ index }}">{{ item.childCount }}个维度背调项目
+          <image class="_image  meal-more-icon  {{ ( i[index]===index || i[index] ===0 )? 'rotate' : '' }}" src="{{imageUrl}}index-meal-icon2.png" mode="widthFix"></image>
+        </view>
+        <text class="_text  meal-item-desc {{ ( i[index]===index || i[index] ===0  )? 'open' : '' }}">{{ item.description}}</text>
+      </view>
+      <view class="  meal-item-right">
+        <text class="_text  price">￥{{ item.price }}</text>
+        <button class="_button " data-meal='{{item}}' bindtap='enterbacktune'>立即背调</button>
+      </view>
+      <view class="  sign-icon">
+        <image src="{{item.name}}" mode="widthFix" class="_image "></image>
+      </view>
+    </view>
+
+  </view>
+</view>

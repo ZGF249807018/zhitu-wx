@@ -1,0 +1,24 @@
+<view class='chance-contact'>
+  <view class='inputcont'>
+    <view class='chance-contact-head'>
+      <text>旧邮箱:</text>
+      <text>{{ tenantList.email || '暂无' }}</text>
+    </view>
+  </view>
+  <view class='inputbord'>
+    <view></view>
+  </view>
+  <view class='inputcont inputcont-second'>
+    <input bindinput="getEmailCode" placeholder='请输入验证码' value='{{inputcontentpassword}}' placeholder-class="placeholderStyle"></input>
+    <text bindtap='getpassword'>获取验证码</text>
+  </view>
+  <view class='inputbord'>
+    <view></view>
+  </view>
+  <view class='inputcont inputcont-second'>
+    <input bindinput="getEmail" placeholder='请输入新的邮箱' value='{{inputcontentemail}}' placeholder-class="placeholderStyle"></input>
+  </view>
+  <view class='ok'>
+    <view bindtap='submit'>确定</view>
+  </view>
+</view>

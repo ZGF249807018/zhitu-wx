@@ -1,0 +1,8 @@
+<view class="seting">
+  <view class="seting-list" wx:for="{{ setingList }}" wx:key="key" wx:index="{{index}}" bindtap='onClick' data-id='{{index}}'>
+    <text>{{ item.text }}</text>
+    <image src="{{ item.image }}" mode="scaleToFill" />
+  </view>
+  <view class="seting-line"></view>
+  <view class='quitseting'  bindtap="quitLogs">退出登录</view>
+</view>

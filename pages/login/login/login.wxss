@@ -1,0 +1,43 @@
+.login > image {
+  display: block;
+  width: 367rpx;
+  height: 131rpx;
+  margin: 200rpx auto 209rpx;
+}
+.login ._button {
+  width: 550rpx;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 16rpx;
+  font-size: 36rpx;
+}
+.login .wx-login {
+  background-color: #18AF16;
+  border-color: #18AF16;
+  color: #FFFFFF;
+  margin-bottom: 50rpx;
+}
+.login .wx-login image {
+  width: 50rpx;
+  height: 41rpx;
+  margin-right: 30rpx;
+  vertical-align: middle;
+}
+.login .wx-login ._span {
+  vertical-align: middle;
+}
+.login .phone-login {
+  background-color: #FFFFFF;
+  border-color: #8E8E8E;
+  color: #8E8E8E;
+}
+.login .phone-login image {
+  width: 37rpx;
+  height: 50rpx;
+  margin-right: 36rpx;
+  vertical-align: middle;
+}
+.login .phone-login ._span {
+  vertical-align: middle;
+}
+

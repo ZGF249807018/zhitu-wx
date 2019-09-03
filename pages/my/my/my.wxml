@@ -1,0 +1,154 @@
+<view class="my">
+  <view class='my-top' style='background: url("{{imageUrl}}my-background.png");background-size: cover;'>
+    <view class='head' bindtap='enterdetailmessage'>
+      <view class='headjpg'>
+        <image wx:if="{{tenantList.logo}}" catchtap='openImg' src="{{images + tenantList.logo}}" data-logo='{{tenantList.logo}}'></image>
+        <image wx:if="{{!tenantList.logo}}" catchtap='openImg' src="{{imageUrl}}Default-avatar.png" ></image>
+        <view style='background:#0092fe'>
+          {{ tenantList.certifyStatus === '0' ? "未认证" : tenantList.certifyStatus === '1' ? "审核中" : tenantList.certifyStatus === '2' ? "认证失败" : tenantList.certifyStatus === '3' ? "已认证" : "" }}
+        </view>
+      </view>
+      <view class='head-font' wx-if="{{token}}">
+        <view>{{ tenantList.nickName||tenantList.mobile }}</view>
+        <view>{{ tenantList.company || ""}}</view>
+      </view>
+
+      <view class='head-direction' wx-if="{{token}}">
+        <image src="{{imageUrl}}my-more.png"></image>
+      </view>
+      <view class='head-login' wx-if="{{!token}}" catchtap='enterLogin'>点击登录/注册</view>
+    </view>
+    <view class='head-icon'>
+      <view class='head-icon-child' bindtap='entermyorder' data-type='3'>
+        <image src="{{imageUrl}}back-green.png"></image>
+        <text>已背调 {{ alreadyBackNum }} </text>
+      </view>
+      <view class='head-icon-child' bindtap='entermyorder' data-type='0'>
+        <image src="{{imageUrl}}In-the-processing.png"></image>
+        <text>处理中 {{processingCount  }}</text>
+      </view>
+      <view class='head-icon-child' bindtap='entermyorder' data-type='4'>
+        <image src="{{imageUrl}}canceled.png"></image>
+        <text>已取消 {{ canceledCount }}</text>
+      </view>
+    </view>
+  </view>
+  <view class='my-center'>
+    <view class='my-center-child' bindtap='enterbalancedetail'>
+      <view>
+        <image src="{{imageUrl}}balance.png"></image>
+      </view>
+
+      <view class='my-center-flex'>
+        <view>余额</view>
+        <view class='remain'>
+          <text wx:if="{{showUnit}}"> {{ balance }}元 </text>
+          <image src="{{imageUrl}}more-small.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class='my-center-child' bindtap='entercoupons'>
+      <view>
+        <image style='width:38rpx;height:29rpx;' src="{{imageUrl}}Coupons.png" class='my-center-cheap'></image>
+      </view>
+      <view class='my-center-flex'>
+        <view>优惠卷</view>
+        <view class='remain'>
+          <text wx:if="{{showUnit}}"> {{ couponRecord }}张 </text>
+          <image src="{{imageUrl}}more-small.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class='my-center-child' bindtap='enterZhitumoney'>
+      <view>
+        <image src="{{imageUrl}}money.png" style='width:30rpx;height:30rpx;'></image>
+      </view>
+      <view class='my-center-flex'>
+        <view>职兔币</view>
+        <view class='remain'>
+          <text wx:if="{{showUnit}}">0</text>
+          <image src="{{imageUrl}}more-small.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='my-center my-center-content'>
+    <view class='my-center-child' bindtap='entermyorder'>
+      <view>
+        <image src="{{imageUrl}}my-order.png" class='my-center-order'></image>
+      </view>
+      <view class='my-center-flex'>
+        <view>我的订单</view>
+        <view class='remain'>
+          <text></text>
+          <image src="{{imageUrl}}more-small.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class='my-center-child' bindtap='enterpositionM'>
+      <view>
+        <image style='width:50rpx;height:50rpx;' src="{{imageUrl}}position@1x.png" class='my-center-logo'></image>
+      </view>
+      <view class='my-center-flex'>
+        <view>职盟</view>
+        <view class='remain'>
+          <text></text>
+          <image src="{{imageUrl}}more-small.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class='my-center-child'>
+      <view>
+        <image src="{{imageUrl}}myCustomer.png"></image>
+      </view>
+      <view class='my-center-flex'>
+        <button open-type='contact' session-from=''>我的客服</button>
+        <!-- <view>我的客服</view> -->
+        <view class='remain'>
+          <text></text>
+          <image src="{{imageUrl}}more-small.png" class='my-center-help'></image>
+        </view>
+      </view>
+    </view>
+    <view class='my-center-child' bindtap='enterhelpcenter'>
+      <view>
+        <image src="{{imageUrl}}help-center.png"></image>
+      </view>
+      <view class='my-center-flex'>
+        <view>帮助中心</view>
+        <view class='remain'>
+          <text></text>
+          <image src="{{imageUrl}}more-small.png" class='my-center-help'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='my-center my-center-bottom'>
+    <view class='my-center-child' bindtap='entersetting'>
+      <view>
+        <image src="{{imageUrl}}set@1x.png" class='my-center-set'></image>
+      </view>
+      <view class='my-center-flex'>
+        <view>设置</view>
+        <view class='remain'>
+          <text></text>
+          <image src="{{imageUrl}}more-small.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class='my-center-child' bindtap='enteroboutUs'>
+      <view>
+        <image style='width:38rpx;height:39rpx;' src="{{imageUrl}}risk-warning.png" class='my-center-aboutus' mode="scaleToFill"></image>
+      </view>
+      <view class='my-center-flex'>
+        <view>关于我们</view>
+        <view class='remain'>
+          <text></text>
+          <image src="{{imageUrl}}more-small.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style='height:30rpx;'></view>
+</view>

@@ -1,0 +1,74 @@
+<!--添加候选人-->
+<view>
+  <view class="swiper-tab">
+    <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">手动添加</view>
+    <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">人才库选择</view>
+  </view>
+
+  <swiper style='height:{{height}}rpx' current="{{currentTab}}" duration="300" bindchange="swiperTab">
+    <swiper-item>
+      <view class="tab-content add-candidate-one">
+        <label>
+          <text>姓名                                      
+            </text>
+          <input bindinput='chanceusername' value='{{username}}' placeholder="请输入真实姓名" />
+        </label>
+        <label>
+          <text>身份证号                                      
+            </text>
+          <input bindinput='chanceCardId' type="idcard" value='{{CardId}}' placeholder="请输入身份证号" />
+        </label>
+        <label>
+          <text>手机号码                                      
+            </text>
+          <input bindinput='chancemobile' value='{{mobile}}' type="number" placeholder="请输入手机号码" />
+        </label>
+      </view>
+
+    </swiper-item>
+    <swiper-item>
+      <view class="tab-content add-candidate-two">
+        <view class="search-bar">
+          <image class="search-icon" src="{{imageUrl}}search.png" mode="aspectFit" />
+          <input placeholder="输入姓名或手机号码" bindconfirm='search' bindblur='search' bindinput='getContent' />
+        </view>
+        <checkbox-group bindchange="onChange">
+          <label class="checkbox" wx:for="{{items}}" wx:key="{{index}}">
+            <checkbox value="{{item.id}}" color="#2DA0F4" checked="{{item.checked}}" disabled="{{item.disabled}}" />
+            <view class="personnel-item">
+              <view>
+                <text class="personnel-head-portrait">{{item.surname}}</text>
+              </view>
+              <view class="personnel-info">
+                <view class="personnel-info-main">
+                  <view class="personnel-msg-one">
+                    {{ item.name }}
+                    <image class="add-select-phone" src="{{imageUrl}}add-select-phone-icon.png" mode="aspectFit" />
+                    <text class="personnel-msg-phone">{{ item.mobile }}</text>
+                  </view>
+                  <view class="personnel-msg-two">
+                    <text class="personnel-msg-time" wx:if="{{ item.workingNum}}">{{item.workingNum === 1 ? "1-3年" :
+                      item.workingNum === 2 ? "3-5年" :
+                      item.workingNum === 3 ? "5-10年" :
+                      item.workingNum === 4 ? "10年以上" : ""||"暂无"}}</text>
+                    <text class='personnel-msg-y' wx:if="{{ item.workingNum}}"></text>
+                    <text wx:if="{{item.position}}">{{ item.position||"暂无" }}</text>
+                  </view>
+                </view>
+                <view data-candidateId='{{item.id}}' class="see-job" bindtap='enterjobwantedTable'>
+                  查看求职表
+                  <image class="add-select-arrow" src="{{imageUrl}}add-select-arrow.png" />
+                </view>
+              </view>
+            </view>
+            <!-- <text class="checkbox-text">{{item.value}}
+              </text> -->
+          </label>
+        </checkbox-group>
+      </view>
+    </swiper-item>
+  </swiper>
+  <button data-position='{{currentTab}}' class="add-candidate-confirm" bindtap='sure'>确定
+  </button>
+  <!-- {{_position==0?'fixed':'relative'}} -->
+</view>

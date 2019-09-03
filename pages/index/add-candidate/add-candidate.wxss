@@ -1,0 +1,215 @@
+/* pages/index/add-candidate/add-candidate.wxss */
+
+.swiper-tab {
+  width: 100%;
+  border-bottom: 6rpx solid #e0e0e0;
+  text-align: center;
+  height: 106rpx;
+  line-height: 106rpx;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+.swiper-tab-item {
+  width: 50%;
+  height: 106rpx;
+  font-size: 28rpx;
+  color: #8e8e8e;
+}
+
+.active {
+  color: #2da0f4;
+  border-bottom: 6rpx solid #2da0f4;
+}
+
+swiper {
+  text-align: center;
+  /* position: absolute; */
+  width: 100%;
+  /* top: 106rpx;
+  bottom: 0; */
+}
+
+.tab-content {
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  overflow: scroll;
+  margin-bottom: 120rpx;
+}
+
+.add-candidate-one label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+}
+
+.add-candidate-one label input {
+  text-align: right;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(192, 192, 192, 1);
+}
+
+.search-bar {
+  display: flex;
+  padding: 0 156rpx;
+  height: 68rpx;
+  margin-top: 20rpx;
+  background-color: #f0f0f0;
+  margin-bottom: 40rpx;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.search-bar input {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  color: #8e8e8e;
+  font-size: 28rpx;
+  border: none;
+  height: 68rpx;
+  line-height: 68rpx;
+  text-align: left;
+  margin-left: 50rpx;
+  vertical-align: middle;
+}
+
+.search-icon {
+  width: 36rpx;
+  height: 35rpx;
+  margin: 17rpx 0 16rpx 0;
+  vertical-align: middle;
+}
+
+.add-candidate-two label {
+  display: flex;
+  align-items: center;
+  line-height: auto;
+  /* margin-bottom: 40rpx; */
+  height: 170rpx;
+}
+
+.personnel-head-portrait {
+  display: block;
+  width: 90rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #2da0f4;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+}
+
+.add-candidate-two checkbox {
+  display: block;
+  width: 50rpx;
+  box-sizing: border-box;
+  margin-right: 20rpx;
+  margin-bottom: 30rpx;
+  /* background-color: #2DA0F4; *//* color: #FFFFFF; */
+}
+
+.personnel-item {
+  width: 100%;
+  display: flex;
+  /* align-items: center; */
+  position: relative;
+}
+
+.personnel-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #e0e0e0;
+  margin-left: 20rpx;
+  padding-bottom: 30rpx;
+}
+
+.personnel-info-main {
+}
+
+.personnel-msg-one {
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  font-size: 28rpx;
+  line-height: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.add-select-phone {
+  display: inline-block;
+  width: 20rpx;
+  height: 20rpx;
+  margin: 0 20rpx;
+}
+
+.add-select-arrow {
+  display: inline-block;
+  width: 11rpx;
+  height: 20rpx;
+  margin-left: 10rpx;
+  vertical-align: middle;
+}
+
+.personnel-msg-phone {
+  color: #8e8e8e;
+}
+
+.personnel-msg-two {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #c0c0c0;
+  text-align: left;
+  /* margin-bottom: 30rpx; */
+}
+
+.personnel-msg-time {
+  line-height: 30rpx;
+ 
+}
+.personnel-msg-y{
+  padding-right: 30rpx;
+  margin-right: 30rpx;
+  border-right: 1px solid #c0c0c0;
+}
+.see-job {
+  color: #2da0f4;
+  font-weight: 500;
+  font-size: 24rpx;
+}
+
+.add-candidate-confirm {
+  width: 100%;
+  background-color: #2da0f4;
+  border: 1px solid #2da0f4;
+  color: #fff;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  font-size: 36rpx;
+  border-radius: 0%;
+}
+/* .relative{
+  position: relative;
+}
+.fixed{
+  position: fixed;
+} */
+.tab-content input{
+  color: #333!important;
+  width: 500rpx;
+}

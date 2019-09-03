@@ -1,0 +1,50 @@
+<view class="talentPool">
+  <view class="talentPool-search">
+    <view bindtap="focusInput">
+      <image src="{{ https + 'search.png'}}" mode="scaleToFill" lazyLoad="true" />
+      <input type="text" placeholder="输入姓名或手机号码" value='{{content}}' bindinput="getContent" bindconfirm="searchUser" bindblur="searchUser" focus="{{focus}}" />
+    </view>
+    <view bindtap="showSort" class='inline' data-logo="show">
+      <text data-logo="show">{{ sortList[sortNum].name }}</text>
+      <text data-logo="show">◢</text>
+    </view>
+
+  </view>
+  <view class="talentPool-sort" wx:if="{{ showSort }}">
+    <view bindtap="toggleSort" wx:for="{{ sortList }}" wx:key="{{ item.name }}" data-logo="{{ index}}" class="{{ sortNum === index ? 'sortAction' : '' }}">
+      {{ item.name }}
+    </view>
+  </view>
+  <view class="talentPool-info" wx:for="{{ applicantList }}" wx:key="key">
+    <view class="talentPool-info-left">{{ item.sex }}</view>
+    <view class="talentPool-info-right">
+      <view class="talentPool-info-child-left">
+        <view class="talentPool-info-child-left-top">
+          <text>{{ item.name }}</text>
+          <image src="{{ https +'tel.png' }}" mode="scaleToFill" lazyLoad="{{ true }}" />
+          <text>{{ item.mobile || '' }}</text>
+        </view>
+        <view class="talentPool-info-child-left-bottom">
+          <text>{{  item.workingNum === 1 ? "1-3年" :
+            item.workingNum === 2 ? "3-5年" : 
+            item.workingNum === 3 ? "5-10年" : 
+            item.workingNum === 4 ? "10年以上" : "无"}}</text>
+          <text>|</text>
+          <text>{{ item.position ||'' }}</text>
+        </view>
+      </view>
+      <view class="talentPool-info--child-right">
+        <view class="talentPool-info-child-right-top">
+          <navigator url="{{ '/pages/talentPool/jobWantedTbale/jobWantedTbale?id=' + item.id }}" hover-class="className">
+            <text>查看求职表</text>
+            <image src="{{ https +'apply-job.png' }}" mode="scaleToFill" lazyLoad="{{ true }}" />
+          </navigator>
+        </view>
+        <view class="talentPool-info-child-right-bottom">
+          <view type="default" bindtap="jumpBack" data-item="{{ item }}">立即背调</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='people' wx:if="{{!applicantList[0].id}}">暂无人才库</view>
+</view>

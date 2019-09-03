@@ -1,0 +1,154 @@
+page{
+  background: #F5F5F5;
+}
+.use-coupon{
+  background: #F5F5F5;
+}
+swiper {
+  width: 100%;
+}
+
+.swiper-tab {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  border-bottom: 2rpx solid #ccc;
+  text-align: center;
+  height: 85rpx;
+  line-height: 85rpx;
+  font-weight: bold;
+  background: white;
+}
+
+.swiper-tab-item {
+  display: inline-block;
+  width: 20%;
+  height: 80rpx;
+  color: #8e8e8e;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+}
+
+.active {
+  color: #2da0f4;
+  border-bottom: 6rpx solid #2da0f4;
+}
+.use-coupon-child{
+  background: white;
+}
+.use-coupon-child>view:nth-of-type(1) {
+  padding: 30rpx 30rpx 29rpx 30rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e0e0e0;
+}
+.use-coupon-child:not(:first-of-type){
+  margin-top: 20rpx;
+}
+.use-coupon-child:nth-last-of-type(1){
+  margin-bottom: 50rpx;
+  /* padding-bottom: 35rpx;
+  box-sizing: border-box; */
+}
+.use-coupon-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.use-coupon-head>view:nth-of-type(1) {
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: #333;
+}
+
+.use-coupon-head>view:nth-of-type(2) {
+  font-size: 24rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: #8e8e8e;
+}
+
+.use-coupon-center {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #333;
+  margin-top: 30rpx;
+}
+
+.use-coupon-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30rpx;
+}
+
+.use-coupon-bottom>view:nth-of-type(1) {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #333;
+}
+
+.use-coupon-bottom>view:nth-of-type(1)>text:nth-of-type(2) {
+  display: inline-block;
+  margin-left: 9rpx;
+}
+
+.use-coupon-bottom>view:nth-of-type(2) {
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: #f5402d;
+}
+
+.use-coupon-child-shopdetail {
+  padding: 29rpx 30rpx 20rpx 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #333;
+}
+
+.use-coupon-child-shopdetail>view:nth-of-type(1) {
+  margin-top: 10rpx;
+}
+
+.use-coupon-child-button {
+  display: flex;
+  justify-content: space-between;
+  height: 60rpx;
+}
+
+.use-coupon-child-button>view {
+  width: 172rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 50rpx;
+  border: 1px solid #c3c3c3;
+  text-align: center;
+  background: #2da0f4;
+}
+
+.use-coupon-child-button>view:nth-of-type(1) {
+  background: #fff;
+  color: #8e8e8e;
+}
+
+.use-coupon-child-button>view:nth-of-type(2) {
+  color: #fff;
+  margin-left: 15rpx;
+}
+.no-coupon-child{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+.no-coupon-text{
+  color:  #666;
+  font-size: 28rpx;
+}

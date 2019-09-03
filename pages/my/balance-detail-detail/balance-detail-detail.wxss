@@ -1,0 +1,38 @@
+.moneyDetail{
+  width: 100%;
+}
+.moneyDetail-header{
+  padding: 50rpx 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1rpx solid #E0E0E0;
+}
+.moneyDetail-header>text:first-child{
+  color: #A3A3A3;
+  font-size: 28rpx;
+}
+.moneyDetail-header>text:last-child{
+  color: #2DA0F4;
+  font-size: 52rpx;
+}
+.moneyDetail-content{
+  padding: 50rpx 30rpx;
+  border: 1rpx solid #E0E0E0;
+}
+.moneyDetail-content>view{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28rpx;
+}
+.moneyDetail-content>view>text:first-child{
+  color: #A3A3A3;
+  font-size:  28rpx;
+}
+.moneyDetail-content>view>text:last-child{
+  color: #333333;
+  font-size:  28rpx;
+}
+
+

@@ -1,0 +1,64 @@
+<!--pages/my/basicmessage/basicmessage.wxml-->
+<view class='basicmessage'>
+  <view>
+    <view class='basicmessage-child'>
+      <view>企业图片</view>
+      <view class='basicmessage-flex' bindtap='selectpicture'>
+        <image src="{{ images + tenantList.logo || company.userImg }}"></image>
+        <image src="{{imageUrl}}more-small.png"></image>
+      </view>
+    </view>
+    <view class='basicmessage-child'>
+      <view>企业名称</view>
+      <view>
+        <view>{{ tenantList.company||"" }}</view>
+      </view>
+    </view>
+    <view class='basicmessage-child'>
+      <view>用户名</view>
+      <view>
+        <view>{{ tenantList.name||tenantList.mobile||"" }}</view>
+      </view>
+    </view>
+
+    <view class='basicmessage-child'>
+      <view>联系人</view>
+      <view class='basicmessage-flextp' bindtap='chancepeople'>
+        <view>{{ tenantList.contactName||"" }}</view>
+        <image src="{{imageUrl}}more-small.png"></image>
+      </view>
+    </view>
+
+    <view class='basicmessage-child'>
+      <view>联系方式</view>
+      <view class='basicmessage-flextp' bindtap='chancetel'>
+        <view>{{ tenantList.mobile ||""}}</view>
+        <image src="{{imageUrl}}more-small.png"></image>
+      </view>
+    </view>
+
+    <view class='basicmessage-child'>
+      <view>邮箱</view>
+      <view class='basicmessage-flextp' bindtap='chanceemail'>
+        <view wx:if="{{tenantList.email}}">更改邮箱</view>
+        <view wx:if="{{!tenantList.email}}">绑定邮箱</view>
+        <image src="{{imageUrl}}more-small.png"></image>
+      </view>
+    </view>
+
+    <view class='basicmessage-child'>
+      <view>企业认证</view>
+      <view class='basicmessage-flextp' bindtap='certification' wx:if="{{userList.certifyStatus === '0'}}" data-certifyStatus='{{ userList.certifyStatus}}'>
+        <view>{{ userList.certifyStatus === '0' ? "未认证" : userList.certifyStatus === '1' ? "审核中" : userList.certifyStatus === '2' ? "认证失败" : userList.certifyStatus === '3' ? "已认证" : '' }}
+        </view>
+        <image src="{{imageUrl}}more-small.png"></image>
+      </view>
+      <view class='basicmessage-flextp' wx:if="{{userList.certifyStatus !== '0'}}" data-certifyStatus='{{ userList.certifyStatus}}'>
+        <view>{{ userList.certifyStatus === '0' ? "未认证" : userList.certifyStatus === '1' ? "审核中" : userList.certifyStatus === '2' ? "认证失败" : userList.certifyStatus === '3' ? "已认证" : '' }}
+        </view>
+        <image src="{{imageUrl}}more-small.png"></image>
+      </view>
+    </view>
+  </view>
+
+</view>

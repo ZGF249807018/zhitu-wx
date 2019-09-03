@@ -1,0 +1,84 @@
+/* pages/my/basicmessage/basicmessage.wxss */
+
+.basicmessage {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #f5f5f5;
+}
+
+.basicmessage>view {
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.basicmessage>view>.basicmessage-child:nth-last-of-type(1) {
+  border: 1px solid transparent;
+}
+
+.basicmessage-child {
+  display: flex;
+  justify-content: space-between;
+  height: 100rpx;
+  border-bottom: 1px solid #e0e0e0;
+  line-height: 100rpx;
+}
+
+.basicmessage-child image:nth-of-type(1) {
+  width: 70rpx;
+  height: 70rpx;
+  margin-top: 30rpx;
+  border-radius: 70rpx;
+}
+
+.basicmessage-child image:nth-of-type(2) {
+  width: 16rpx;
+  height: 30rpx;
+  margin-top: 50rpx;
+  margin-left: 20rpx;
+}
+
+.basicmessage-child:nth-of-type(1) {
+  height: 130rpx;
+  line-height: 130rpx;
+}
+
+.basicmessage-child>view:nth-of-type(1) {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #333;
+}
+
+.basicmessage-child>view:nth-of-type(2) {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #a3a3a3;
+}
+
+.basicmessage-flex {
+  display: flex;
+  justify-content: space-between;
+  /* width: 400rpx; */
+}
+
+.basicmessage-flextp {
+  display: flex;
+  justify-content: space-between;
+}
+
+.basicmessage-flextp>view {
+  width: 425rpx;
+  text-align: right;
+}
+
+.basicmessage-flextp>image {
+  width: 16rpx !important;
+  height: 30rpx !important;
+  margin-top: 35rpx !important;
+  margin-left: 20rpx;
+}

@@ -1,0 +1,65 @@
+<view class="talentPool">
+  <view class="talentPool-search" bindtap="focusInput">
+    <view>
+      <image src="{{ https + 'search.png'}}" mode="scaleToFill" lazyLoad="true" />
+      <input type="text" value='{{content}}' placeholder="输入姓名或手机号码" bindinput="getContent" bindconfirm='searchUser' bindblur='searchUser' focus='{{focus}}' />
+    </view>
+  </view>
+  <view class="talentPool-info" wx:for="{{ applicantList }}" wx:key="index">
+    <view class="talentPool-info-left">{{ item.sex }}</view>
+    <view class="talentPool-info-right">
+      <view class="talentPool-info-child-left">
+        <view class="talentPool-info-child-left-top">
+          <text>{{ item.candidateName }}</text>
+          <text>|</text>
+          <text>{{ item.packageName }}</text>
+        </view>
+        <view class="talentPool-info-child-left-bottom">
+          <image src="{{ https +'tel.png' }}" mode="scaleToFill" lazyLoad="{{ true }}" />
+          <text>{{ item.mobile||"暂无" }}</text>
+        </view>
+      </view>
+      <view class="talentPool-info--child-right">
+        <view class="talentPool-info-child-right-top" bindtap="openStatus" data-orderNo='{{item.orderNo}}'>
+          <view>
+            <image src="{{ https +'Report-progress.png' }}" mode="scaleToFill" lazyLoad="{{ true }}" />
+          </view>
+          <text>{{ item.status }}</text>
+        </view>
+        <view class="talentPool-info-child-right-bottom">
+          <button type="default" data-orderNo='{{item}}' bindtap="defaultTap">查看报告</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='modal' wx:if="{{modalOpened}}">
+  <view class='modal-shadow' bindtap='onModalClose'></view>
+  <view class="status-modal">
+    <view>
+      <image src="{{https+'cancel@1x.png'}}" bindtap='onModalClose'></image>
+    </view>
+    <view wx:for="{{ statusList }}" wx:key="key" wx:index="index">
+      <text class="{{item.time?'':'grey time'}}"> {{ item.time||"" }}</text>
+      <view class="{{item.time?'':'greybackground'}}">{{ item.num }}</view>
+      <text class="{{item.time?'':'grey'}}">{{ item.status }}</text>
+    </view>
+
+    <view>
+      <text class="{{!isFinish?'':'grey time'}}"> {{ checkstatus.time||"" }}</text>
+      <view class="{{!isFinish?'':'greybackground'}}">{{ checkstatus.num }}</view>
+      <text class="{{!isFinish?'':'grey'}}">{{ checkstatus.status }}</text>
+    </view>
+
+
+    <view>
+      <text class="{{!isFinish?'':'grey time'}}" wx:if="{{statusList[2].time}}"> {{ finishstatus.time||"" }}          </text>
+      <text class="{{!isFinish?'':'grey time'}}" wx:if="{{!statusList[2].time}}"></text>
+      <view class="{{!isFinish?'':'greybackground'}}">{{ finishstatus.num }}</view>
+      <text class="{{!isFinish?'':'grey'}}">{{ finishstatus.status }}</text>
+    </view>
+    <view wx:if="{{isFinish}}" style='justify-content: center;'>预计</view>
+  </view>.
+</view>
+<view class='people' wx:if="{{!applicantList[0].candidateId}}">暂无报告信息</view>
+<!-- </modal> -->

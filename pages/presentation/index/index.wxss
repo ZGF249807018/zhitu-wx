@@ -1,0 +1,231 @@
+page {
+  background: #fff;
+}
+
+.talentPool {
+  padding: 20rpx 50rpx;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.talentPool-search {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.talentPool-search>view {
+  width: 100%;
+  height: 68rpx;
+  background: #f0f0f0;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+}
+
+.talentPool-search>view>image {
+  width: 36rpx;
+  height: 35rpx;
+  margin-right: 40rpx;
+}
+
+.talentPool-search>view>input {
+  color: #8e8e8e;
+  font-size: 28rpx;
+  background: #f0f0f0;
+}
+
+.talentPool-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.talentPool-info .talentPool-info-left {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  background: #2da0f4;
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.talentPool-info-right {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #e0e0e0;
+  padding: 30rpx 0;
+}
+
+.talentPool-info-child-left .talentPool-info-child-left-top {
+  margin-bottom: 20rpx;
+}
+
+.talentPool-info-child-left .talentPool-info-child-left-top>text:first-child {
+  color: #333;
+  font-size: 28rpx;
+  font-weight: 400;
+}
+
+.talentPool-info-child-left .talentPool-info-child-left-top>text:nth-child(2) {
+  color: #8e8e8e;
+  font-size: 28rpx;
+  margin: 0 30rpx;
+}
+
+.talentPool-info-child-left .talentPool-info-child-left-top>text:last-child {
+  color: #333;
+  font-size: 28rpx;
+}
+
+.talentPool-info-child-left .talentPool-info-child-left-bottom>image {
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 10rpx;
+}
+
+.talentPool-info-child-left .talentPool-info-child-left-bottom>text {
+  color: #8e8e8e;
+  font-size: 28rpx;
+}
+
+.talentPool-info-child-right-top text {
+  color: #8e8e8e;
+  font-size: 28rpx;
+}
+
+.talentPool-info-child-right-top {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.talentPool-info-child-right-top image {
+  width: 27rpx;
+  height: 32rpx;
+  margin-right: 20rpx;
+}
+
+.talentPool-info-child-right-bottom button {
+  width: 160rpx;
+  height: 57rpx;
+  background: #ffffff;
+  border-radius: 42rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1rpx solid #2da0f4;
+  color: #2da0f4;
+  font-size: 24rpx;
+}
+
+.status-modal {
+  position: absolute;
+  top: 26%;
+  left: 30rpx;
+  width: 690rpx;
+  /* height: 595rpx; */
+  background: white;
+  border-radius: 16rpx;
+  /* transform: translate(-50%); *//* padding: 45rpx 60rpx;
+  box-sizing: border-box; */
+}
+
+.status-modal>view {
+  display: flex;
+  align-items: center;
+  margin-bottom: 46rpx;
+}
+
+.status-modal>view>text {
+  color: #2da0f4;
+  font-size: 28rpx;
+  display: inline-block;
+}
+
+.status-modal>view>text:nth-of-type(1) {
+  display: inline-block;
+  width: 279rpx;
+  margin-left: 77rpx;
+}
+
+.status-modal>view>view {
+  margin: 0 46rpx;
+  width: 58rpx;
+  height: 58rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background: #2da0f4;
+  border-radius: 50%;
+  border: 4rpx solid #def8fe;
+  font-size: 24rpx;
+}
+
+.status-modal>view:last-child {
+  color: #8e8e8e;
+  font-size: 28rpx;
+  display: flex;
+  /* justify-content: center; */
+  margin: 0 auto;
+  margin-bottom: 50rpx;
+}
+
+.status-modal .unfinished text {
+  color: #8e8e8e;
+  font-size: 28rpx;
+}
+
+.status-modal .unfinished>view {
+  background: #8e8e8e;
+  border: 4rpx solid #ddd;
+}
+.modal{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.modal-shadow{
+  background: #000000;
+  opacity:0.4;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.status-modal image{
+  position: absolute;
+  width: 55rpx;
+  height: 88rpx;
+  top: -88rpx;
+  right: 0
+}
+.time{
+  display: inline-block;
+  width: 279rpx;
+}
+.grey{
+  color: #8E8E8E !important;
+
+}
+.greybackground{
+   background: #8E8E8E !important;
+}
+.people{
+  text-align: center;
+  color: #8E8E8E;
+}

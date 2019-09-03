@@ -1,0 +1,180 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": false,
+		"autoAudits": false,
+		"uglifyFileName": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.5.2",
+	"appid": "wxe0d6e4da11c9e809",
+	"projectname": "zhitu",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 20,
+			"list": [
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "index",
+					"pathName": "pages/index/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "add-candidate",
+					"pathName": "pages/index/add-candidate/add-candidate",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "meal-list",
+					"pathName": "pages/index/meal-list/meal-list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "back-tune",
+					"pathName": "pages/index/back-tune/back-tune",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "er",
+					"pathName": "pages/erweim/er",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "set-login-password",
+					"pathName": "pages/my/set-login-password/set-login-password",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "set-pay-password",
+					"pathName": "pages/my/set-pay-password/set-pay-password",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "setting",
+					"pathName": "pages/my/seting/seting",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "login-phone",
+					"pathName": "pages/login/login-phone/login-phone",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "bindemail",
+					"pathName": "pages/my/bindemail/bindemail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "registration-perfect",
+					"pathName": "pages/login/registration-perfect/registration-perfect",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "company-ok",
+					"pathName": "pages/my/company-ok/company-ok",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "aboutOurs",
+					"pathName": "pages/my/aboutOurs/aboutOurs",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "backResult",
+					"pathName": "pages/index/navigation/backResult/backResult",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "report",
+					"pathName": "pages/report/report",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "reportindex",
+					"pathName": "pages/presentation/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "registration",
+					"pathName": "pages/login/registration/registration",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "my",
+					"pathName": "pages/my/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "agreement",
+					"pathName": "pages/login/agreement/agreement",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "postInvite",
+					"pathName": "pages/index/navigation/postInvite/postInvite",
+					"scene": null
+				}
+			]
+		}
+	}
+}

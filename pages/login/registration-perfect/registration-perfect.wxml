@@ -1,0 +1,67 @@
+<view class="registration">
+  <view class="registration-input">
+    <image class="input-left-icon" src="{{imageUrl}}registration-company.png" mode="widthFix"></image>
+    <input bindinput='watchcompanyname' bindblur='blurcompanyname' value='{{companyname}}' type="text" placeholder-style="color:#8E8E8E" placeholder="请输入与营业执照一致的公司名称" class="_input" />
+  </view>
+  <view class=" registration-input">
+    <image class="input-left-icon" src="{{imageUrl}}user-name.png" mode="widthFix"></image>
+    <input bindinput='watchusername' bindblur='blurusername' value='{{username}}' type="text" placeholder-style="color:#8E8E8E" placeholder="请输入用户名，如：Jack" class="_input" />
+  </view>
+  <view class="registration-input">
+    <image class="input-left-icon" src="{{imageUrl}}password.png" mode="widthFix"></image>
+    <input  wx:if="{{eye.passwordshow=='password'}}" bindinput='watchpassword' value='{{password}}' type='{{eye.passwordshow}}'  placeholder-style="color:#8E8E8E" placeholder="请输入6-20位数字和字母组成的密码" class="_input" />
+    <input  wx:if="{{eye.passwordshow=='text'}}" bindinput='watchpassword' value='{{password}}' type='{{eye.passwordshow}}'  placeholder-style="color:#8E8E8E" placeholder="请输入6-20位数字和字母组成的密码" class="_input" />
+    <!-- <image class="input-right-icon" src="{{imageUrl}}so.png" mode="widthFix"></image> -->
+     <view class='eyes' bindtap='showpasswordone'>
+      <image src="{{eye.img.closeeye}}" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="registration-input">
+    <image class="input-left-icon" src="{{imageUrl}}password.png" mode="widthFix"></image>
+    <input wx:if="{{eyes.passwordshow=='password'}}" bindinput='watchpasswordagin' value='{{passwordagin}}' type='{{eyes.passwordshow}}' placeholder-style="color:#8E8E8E" placeholder="请确认密码" class="_input" />
+    <input wx:if="{{eyes.passwordshow=='text'}}" bindinput='watchpasswordagin' type='{{eyes.passwordshow}}' value='{{passwordagin}}' placeholder-style="color:#8E8E8E" placeholder="请确认密码" class="_input" />
+    <!-- <image class="input-right-icon" src="{{eyes.img.closeeye}}" mode="widthFix"></image> -->
+    <view class='eyes' bindtap='showpassword'>
+      <image src="{{eyes.img.closeeye}}" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="registration-input">
+    <image class="input-left-icon" src="{{imageUrl}}discount-code.png" mode="widthFix"></image>
+    <input bindinput='watchcountcode' value='{{countcode}}' type="text" placeholder-style="color:#8E8E8E" placeholder="邀请优惠码（非必填）" class="_input" />
+  </view>
+  <view class="service-agreement">
+  <checkbox-group bindchange="checkboxChange">
+    <label class="_label  radio">
+      <!-- <radio color="#2DA0F4" value="r1" checked="true" class="_radio" /> -->
+
+      <checkbox   value="{{knowChecked}}" checked="{{knowChecked}}" />
+      
+      我已阅读并同意
+      <text class="_text " catchtap='enterAgreement'>《职兔职业背调服务协议》</text>
+    </label>
+    </checkbox-group>
+  </view>
+  <view class="immediatelyRegistration">
+    <!-- <navigator url="../login-phone/login-phone" hover-class="none" class="_navigator 4db06342"> -->
+    <button bindtap="registered" class="_button">立即注册</button>
+    <!-- </navigator> -->
+  </view>
+  <view class="exist-login">
+    <!-- <navigator url="../login-phone/login-phone" hover-class="none" class="_navigator"> -->
+    已有账号，
+    <text class="_text" bindtap='login'>立即登录</text>
+    <!-- </navigator> -->
+  </view>
+</view>
+
+
+<!-- <view class='modal' wx:if="{{modal}}">
+  <view>
+    <image wx:if="{{promptpicture==0}}" src='{{imageUrl}}success.png'></image>
+    <image wx:if="{{promptpicture==1}}" src='{{imageUrl}}fail.png'></image>
+    <image wx:if="{{promptpicture==2}}" src='{{imageUrl}}warn.png'></image>
+  </view>
+  <view>
+    <text>{{prompt}}</text>
+  </view>
+</view> -->

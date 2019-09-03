@@ -1,0 +1,233 @@
+page {
+  background: #fff;
+}
+
+.postInvite {
+  padding: 30rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.postInvite-input {
+  padding: 20rpx;
+  position: relative;
+}
+
+.postInvite-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #e0e0e0;
+}
+
+.postInvite-input>view:first-child {
+  height: 50rpx !important;
+  line-height: 50rpx;
+}
+
+.postInvite-title {
+  color: #2da0f4;
+  font-size: 36rpx;
+  border: none;
+}
+
+.selectDate {
+  /* position: absolute;
+  right: 0; *//* width: 100%!important; *//* width:50%!important; */
+}
+
+.postInvite-input>view>text:first-child {
+  color: #333;
+  font-size: 28rpx;
+}
+
+.postInvite-input>view>text:last-child {
+  color: #f5402d;
+  font-size: 28rpx;
+}
+
+.postInvite-input>view>input {
+  color: #c0c0c0;
+  font-size: 28rpx;
+  text-align: right;
+  /* width: 260rpx; */
+  padding-right: 50rpx;
+  box-sizing: border-box;
+}
+
+.postInvite-input input {
+  color: #333 !important;
+  width: 450rpx;
+}
+
+.placeholder {
+  color: #c0c0c0;
+  font-size: 28rpx;
+}
+
+.selectDate picker {
+  display: flex;
+  align-items: center;
+}
+
+.postInvite-time>view:last-child {
+  display: flex;
+  align-items: center;
+}
+
+.postInvite-time>view:last-child>image {
+  width: 16rpx;
+  height: 30rpx;
+}
+
+.postInvite-message {
+  position: relative;
+  margin-top: 20rpx;
+  padding: 30rpx;
+  box-shadow: 1rpx 1rpx 20rpx #defefe;
+}
+
+.postInvite-message-image {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 233rpx;
+}
+
+.postInvite-message>view {
+  color: #333;
+  font-size: 28rpx;
+}
+
+.postInvite-message>view:first-child {
+  margin-bottom: 20rpx;
+}
+
+.btn {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+}
+
+.btn view {
+  border: 0;
+  border-radius: none;
+  width: 50%;
+  font-size: 28rpx;
+  line-height: 100rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.btn>view:first-child {
+  border-top: 1rpx solid #2da0f4;
+  background: #fff;
+  color: #2da0f4;
+}
+
+.btn>view:last-child {
+  background: #2da0f4;
+  color: #fff;
+}
+
+.postInvite-modal {
+  padding: 50rpx 0;
+  width: 100%;
+}
+
+.postInvite-modal-header {
+  color: #333;
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: bold;
+  text-align: center;
+}
+
+.modal-p {
+  padding: 0 30rpx;
+  text-align: left;
+}
+
+.postInvite-modal-message {
+  margin: 20rpx 0;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.postInvite-modal-content {
+  border-bottom: 1rpx solid #e0e0e0;
+  border-top: 1rpx solid #e0e0e0;
+}
+
+.postInvite-modal-content view {
+  margin-bottom: 20rpx;
+}
+
+.postInvite-modal-content>view:first-child {
+  margin-top: 20rpx;
+}
+
+.postInvite-modal-content>view>text:first-child {
+  color: #333;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.postInvite-modal-content>view>text:last-child {
+  color: #333;
+  font-size: 28rpx;
+}
+
+.postInvite-modal-prompt {
+  margin-top: 20rpx;
+}
+
+.postInvite-modal-prompt>text:not(:nth-of-type(1)) {
+  color: #333;
+}
+
+.am-modal-document .am-modal-body {
+  max-width: 700rpx;
+}
+
+.moadal {
+  width: 90%;
+}
+
+.postInvite-time-right {
+  padding-right: 50rpx;
+  box-sizing: border-box;
+}
+
+.postInvite-time-right text {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #c0c0c0;
+}
+
+.postInvite-time-right image {
+  display: inline-block;
+  margin-left: 30rpx;
+  position: relative;
+  top: 5rpx;
+  width: 16rpx;
+  height: 30rpx;
+}
+
+.tui-picker-detail {
+  color: #333;
+  font-size: 28rpx;
+  height: 50rpx !important;
+  line-height: 50rpx;
+}
+
+.pick-time{
+  display: flex;
+}
+.pick-time>image{
+  width:16rpx;
+height:30rpx;
+}

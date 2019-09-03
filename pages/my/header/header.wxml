@@ -1,0 +1,4 @@
+<view class="header">
+  <image wx:if="{{logo}}" src="{{images+ logo}}" class='header-img'></image>
+  <image wx:if="{{!logo}}" src="{{imageUrl}}Default-avatar.png" class='header-img'></image>
+</view>

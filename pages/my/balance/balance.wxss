@@ -1,0 +1,53 @@
+
+.balance{
+  width: 100%;
+  background: #F5F5F5;
+}
+.balance-header{
+  background-image: url(http://39.98.171.198:80/wx-imgs/zhitu/imgs/balancebj.png);
+  background-size: 100% 100%;
+  height: 300rpx;
+  padding-top: 70rpx;
+  box-sizing: border-box;
+}
+.balance-header view{
+  text-align: center;
+}
+.balance-header>view:first-child{
+  margin-bottom:  20rpx;
+  color: #ffffff;
+  font-size: 72rpx;
+}
+.balance-header>view:last-child{
+  color: #C0E2FB;
+  font-size: 28rpx;
+}
+.balance-list-child navigator{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #E0E0E0;
+}
+.balance-list-child .balance-list-child-left{
+  display: flex;
+  align-items: center;
+}
+.balance-list-child .balance-list-child-left>image{
+  width:  38rpx;
+  height: 38rpx;
+  margin-right: 26rpx;
+}
+.balance-list-child .balance-list-child-left>text{
+  color: #333333;
+  font-size: 28rpx;
+}
+.balance-list-child .balance-list-child-right>image{
+  width:  16rpx;
+  height: 30rpx;
+}
+.balance-line{
+  height: 20rpx;
+  background: #F5F5F5;
+}

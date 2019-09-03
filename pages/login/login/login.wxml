@@ -1,0 +1,18 @@
+<view class="login">
+  <image src="{{imageUrl}}logo.png" mode="aspectFit" class="_image"></image>
+    <!-- open-type="getPhoneNumber"  -->
+     <!-- open-type="getUserInfo"  -->
+      <!-- bindgetuserinfo="info" -->
+  <button class="_button  wx-login" 
+    open-type="getPhoneNumber" 
+    bindgetphonenumber="getPhoneNumber">
+    <image src="{{imageUrl}}login-wx.png" mode="scaleToFill" class="_image"></image>
+    <text class="_text">微信账号快速登录</text>
+  </button>
+  <navigator url="../login-phone/login-phone" hover-class="none" class="_navigator">
+    <button class="_button  phone-login" type="default" plain>
+      <image src="{{imageUrl}}login-phone.png" mode="scaleToFill" class="_image"></image>
+      <text class="_text">手机号登录/注册</text>
+    </button>
+  </navigator>
+</view>

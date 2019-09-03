@@ -1,0 +1,159 @@
+<view class="set-meal">
+  <view class=" choice-meal" data-popup="choice-meal">
+    <view class="choice-meal-title">
+      <text>选择套餐</text>
+    </view>
+    <view class=" choice-meal-main" catchtap='selectmeal' wx:if="{{type == 1}}">
+      <text>未选择套餐，去选择</text>
+      <image class="more-small" src="{{imageUrl}}more-small.png" mode="widthFix"></image>
+    </view>
+    <view bindtap="onTopBtnTap" class=" choice-meal-main2" wx:if="{{type == 2 || type == 3}}">
+      <view class="meal-name">
+        <text>{{meal.name}}</text>
+        <text class="meal-price">{{meal.price}}</text>
+      </view>
+      <view class="meal-desc">
+        <view wx:if="{{!meal.name}}" class='noselect' catchtap='selectmeal'>
+          <text>未选择套餐，去选择</text>
+          <image class="more-small" src="{{imageUrl}}more-small.png" mode="widthFix"></image>
+        </view>
+        <text wx:if="{{meal.name=='极速版A'}}">候选人授权后秒出报告</text>
+        <text wx:if="{{meal.name=='极速版B'}}">候选人授权后3个工作日出报告</text>
+        <text wx:if="{{meal.name=='标准版'}}">候选人授权后3个工作日出报告</text>
+        <text wx:if="{{meal.name=='深度版'}}">候选人授权后5个工作日出报告</text>
+      </view>
+      <view class="meal-details">
+        <text wx:if="{{meal.childCount}}">{{meal.childCount}}个维度数据核验</text>
+      </view>
+      <view catchtap='selectmeal' class=" meal-more">
+        <image src="{{imageUrl}}more-big.png" mode="widthFix" class="_image"></image>
+      </view>
+    </view>
+  </view>
+  <view class=" add-candidate">
+    <view class=" add-candidate-header">
+      <image class="add-candidate-icon" src="{{imageUrl}}add-candidate-icon.png" mode="widthFix" bindtap='enteraddcandidate'></image>
+      <text>添加候选人</text>
+    </view>
+    <view bindtap='enteraddcandidate' class=" add-candidate-main" wx:if="{{type == 1}}">
+      <text>未添加候选人，去添加</text>
+      <image class="_image  more-small" src="{{imageUrl}}more-small.png" mode="widthFix"></image>
+    </view>
+    <view class=" add-candidate-main2" wx:if="{{type == 2 || type == 3}}">
+      <view wx:for="{{candidatearr}}" wx:key="{{key}}" wx:item="{{item}}">
+        <text class="_text ">{{item}}</text>
+        <text wx:if="{{candidatearr[index+1] }}">,</text>
+        <view class='err' bindtap='detailcandidate' data-id='{{index}}'>
+          <image src="{{imageUrl}}Modify-contact-cancel.png"></image>
+        </view>
+      </view>
+
+    </view>
+  </view>
+  <view class=" meal-function" wx:if="{{type == 3}}">
+    <view class=" coupon" bindtap="onTopBtnTap" data-popup="coupon">
+      优惠券
+      <view class=" coupon-num">
+        <text class="_text " wx:if="{{!preferentialprice}}">{{couponList.length-1}}张可用</text>
+        <text wx:if="{{preferentialprice}}">  -￥  {{preferentialprice}}</text>
+        <image class="_image  more-small" src="{{imageUrl}}more-small.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <view class=" pay-mode">
+      支付方式
+      <view class=" pay-items">
+        <picker bindchange="bindPickerChange" value="{{payTypesIndex}}" range="{{payTypes}}" range-key="type">
+          <view class=" uni-input">
+            <image wx:if="{{showPayType}}" class="_image  more-small" src="{{imageUrl}}more-small.png" mode="widthFix"></image>{{showPayType ? "" : payTypes[payTypesIndex].type }}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class=" remarks">
+      <text>备注</text>
+      <input bindinput='note' value='{{note}}' placeholder-style="#a3a3a3" maxlength="20" type="text" placeholder="最多可输入20字" class="_input " />
+    </view>
+  </view>
+  <!-- <view class=" customer-service" wx:if="{{type == 1 || type == 2}}">
+    <image src="{{imageUrl}}customer-service.png" mode="widthFix" class="_image "></image>
+  </view> -->
+  <view class='contact' wx:if="{{type == 1 || type == 2}}">
+    <view>
+      <image src="{{imageUrl}}contact.png" class='contact'></image>
+    </view>
+    <button open-type='contact' session-from=''>联系客服</button>
+  </view>
+  <view class=" settlement">
+    <view wx:if="{{preferentialprice}}" class='preferentialprice'>
+      <text>已优惠￥{{allprice>0?preferentialprice:meal.price}}</text>
+    </view>
+    <view class=" total">
+      合计 :
+      <!-- <text class="_text" wx:if="{{!allprice}}">￥0.00</text> -->
+      <text class="_text" wx:if="{{allprice}} ">￥{{allprice=="NaN"?'0.00':allprice>0?allprice:'0.00'}}</text>
+    </view>
+    <view bindtap='pay' class=" settlement-btn {{[type == 2 || type == 3 ? 'active' : '']}}">
+      <text>{{ payvalue == 1 ? "去结算" : "支付" }}</text>
+    </view>
+  </view>
+  <view class=" meal-details-text" wx:if="{{showTop}}" position="bottom" zIndex="5">
+    <view class='meal-pz' bindtap="onPopupClose">
+    </view>
+    <view class=" meal-details-box">
+      <view class=" meal-details-header">
+        {{ showCoupon ? "使用优惠券" : "套餐详情" }}
+      </view>
+      <view class="coupon-list" wx:if="{{showCoupon}}">
+        <radio-group class="_radio-group " bindchange="couponChange">
+          <label class="_label  radio coupon-item" wx:key="index" key="{{index}}" wx:for="{{couponList}}" wx:for-index="index" wx:for-item="couponItem">
+            {{index===couponList.length-1?"" :"￥"}} {{couponItem.decreaseAmount}} {{index===couponList.length-1?"" :":"}} {{couponItem.name }}
+            <radio color="#2DA0F4" value="{{couponItem.id}}" checked="{{index === current}}" class="_radio " />
+          </label>
+        </radio-group>
+      </view>
+      <view wx:if="{{!showCoupon}}">
+        <view class=" meal-text-name">
+          <text>{{meal.childCount}}</text>{{meal.childCount}}个纬度数据核验
+        </view>
+        <text class="meal-text-wenzi">{{meal.description}}</text>
+      </view>
+      <button class="_button  meal-details-close" bindtap="onPopupClose">{{ showCoupon ? "确定" : "关闭" }}</button>
+    </view>
+  </view>
+  <view class='pop' wx:if="{{inputShowed}}">
+    <view></view>
+    <view class='paypop'>
+      <view class='paypop-header'>
+        <view bindtap='closepop'>
+          <image src='{{imageUrl}}Modify-contact-cancel.png'></image>
+        </view>
+        <view>请输入支付密码</view>
+      </view>
+      <view class='paypop-body'>
+        <view>
+          <view>付款金额</view>
+          <view>￥{{allprice>0?allprice:'0.00'}}</view>
+        </view>
+        <view class="paypop-section">
+          <view>
+            <picker bindchange="bindPickerbankChange" value="{{index}}" range="{{array}}">
+              <view class="picker">
+                <text wx:if="{{backdefalut==0}}">{{array[0]}}</text>
+                <text wx:if="{{backdefalut==1}}">{{array[index]}}</text>
+                <image src='{{imageUrl}}more-small.png'></image>
+              </view>
+            </picker>
+          </view>
+        </view>
+        <view>
+          <view class='input_row' catchtap='getFocus'>
+            <view class='pwd_item' wx:for='{{6}}' wx:key='item' wx:for-index='i'>
+              <text wx:if='{{pwdVal.length>i}}'></text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <input class='input_control' password type='number' focus='{{inputShowed}}' value='{{pwdVal}}' bindinput='inputPwd' maxlength='6' />
+</view>

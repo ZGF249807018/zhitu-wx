@@ -1,0 +1,35 @@
+page{
+  background: #F5F5F5;
+}
+.seting{
+  width: 100%;
+}
+.seting-list{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 40rpx;
+  border-bottom: 1rpx solid #E0E0E0;
+  background: #fff;
+}
+.seting-list text{
+  color: #333333;
+  font-size: 28rpx;
+}
+.seting-list image{
+  width: 16rpx;
+  height: 30rpx;
+}
+.seting-line{
+  height: 20rpx;
+  background: #F5F5F5;
+}
+.quitseting{
+  width: 100%;
+  background: #ffffff;
+  height: 100rpx;
+  color:  #2DA0F4;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 100rpx;
+}

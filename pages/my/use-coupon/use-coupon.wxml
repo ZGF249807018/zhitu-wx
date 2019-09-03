@@ -1,0 +1,158 @@
+<view class='use-coupon'>
+  <view class="swiper-tab">
+    <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">未支付</view>
+    <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">待授权</view>
+    <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">已授权</view>
+    <view class="swiper-tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="clickTab">已完成</view>
+    <view class="swiper-tab-item {{currentTab==4?'active':''}}" data-current="4" bindtap="clickTab">已取消</view>
+  </view>
+
+  <swiper style='height:{{height}}rpx' current="{{currentTab}}" duration="300" bindchange="swiperTab">
+    <swiper-item >
+      <view wx:if="{{pay.nopay[0]}}" class='use-coupon-child' wx:for="{{pay.nopay}}" wx:for-item="item" wx:key="index">
+        <view data-content='{{item.orderNo}}' bindtap='enterorderdetail'>
+          <view class='use-coupon-head'>
+            <view>{{item.orderNo}}</view>
+            <view>{{item.createDate}}</view>
+          </view>
+          <view class='use-coupon-center'>{{item.packageName}}</view>
+          <view class='use-coupon-bottom'>
+            <view>
+              <text>{{item.candidateName}}</text>
+              <text>{{item.mobile||"暂无"}}</text>
+            </view>
+            <view>未支付</view>
+          </view>
+        </view>
+        <view class='use-coupon-child-shopdetail'>
+          <view>
+            <text>实付款:</text>￥{{item.price||0}} </view>
+          <view class='use-coupon-child-button'>
+            <view bindtap='cancelorder' data-content='{{item.orderNo}}'>取消订单</view>
+            <view bindtap='orderpay' data-content='{{item}}'>立即支付</view>
+          </view>
+        </view>
+      </view>
+      <view class='no-coupon-child' wx:if="{{pay.nopay==0}}">
+        <text class='no-coupon-text'>暂无订单</text>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view wx:if="{{pay.waitauth[0]}}" class='use-coupon-child' wx:for="{{pay.waitauth}}" wx:for-item="item" wx:key="index">
+        <view  data-content='{{item.orderNo}}' bindtap='enterorderdetail'>
+          <view class='use-coupon-head'>
+            <view>{{item.orderNo}}</view>
+            <view>{{item.createDate}}</view>
+          </view>
+          <view class='use-coupon-center'>{{item.packageName}}</view>
+          <view class='use-coupon-bottom'>
+            <view>
+              <text>{{item.candidateName}}</text>
+              <text>{{item.mobile||"暂无"}}</text>
+            </view>
+            <view>待授权</view>
+          </view>
+        </view>
+        <view class='use-coupon-child-shopdetail'>
+          <view>
+            <text>实付款:</text>￥{{item.actualPay||0}} </view>
+          <view class='use-coupon-child-button'>
+            <view  bindtap='cancelorder' data-content='{{item.orderNo}}'>取消订单</view>
+            <view bindtap='pushAuthorization' data-content='{{item.orderNo}}'>催授权</view>
+          </view>
+        </view>
+      </view>
+      <view class='no-coupon-child' wx:if="{{pay.waitauth==0}}">
+        <text class='no-coupon-text'>暂无订单</text>
+      </view>
+    </swiper-item>
+    <swiper-item >
+      <view wx:if="{{pay.authed[0]}}" class='use-coupon-child' wx:for="{{pay.authed}}" wx:for-item="item" wx:key="index">
+        <view  data-content='{{item.orderNo}}' bindtap='enterorderdetail'>
+          <view class='use-coupon-head'>
+            <view>{{item.orderNo}}</view>
+            <view>{{item.createDate}}</view>
+          </view>
+          <view class='use-coupon-center'>{{item.packageName}}</view>
+          <view class='use-coupon-bottom'>
+            <view>
+              <text>{{item.candidateName}}</text>
+              <text>{{item.mobile||"暂无"}}</text>
+            </view>
+            <view>已授权</view>
+          </view>
+        </view>
+        <view class='use-coupon-child-shopdetail'>
+          <view>
+            <text>实付款:</text>￥{{item.actualPay||0}}</view>
+          <view class='use-coupon-child-button'>
+            <!-- <view>取消订单</view>
+            <view>立即支付</view> -->
+          </view>
+        </view>
+      </view>
+      <view class='no-coupon-child' wx:if="{{pay.authed==0}}">
+        <text class='no-coupon-text'>暂无订单</text>
+      </view>
+    </swiper-item>
+    <swiper-item >
+      <view wx:if="{{pay.paid[0]}}" class='use-coupon-child' wx:for="{{pay.paid}}" wx:for-item="item" wx:key="index">
+        <view  data-content='{{item.orderNo}}' bindtap='enterorderdetail'>
+          <view class='use-coupon-head'>
+            <view>{{item.orderNo}}</view>
+            <view>{{item.createDate}}</view>
+          </view>
+          <view class='use-coupon-center'>{{item.packageName}}</view>
+          <view class='use-coupon-bottom'>
+            <view>
+              <text>{{item.candidateName}}</text>
+              <text>{{item.mobile||"暂无"}}</text>
+            </view>
+            <view>已完成</view>
+          </view>
+        </view>
+        <view class='use-coupon-child-shopdetail'>
+          <view>
+            <text>实付款:</text>￥{{item.actualPay||0}} </view>
+          <view class='use-coupon-child-button'>
+            <!-- <view>取消订单</view>
+            <view>立即支付</view> -->
+          </view>
+        </view>
+      </view>
+      <view class='no-coupon-child' wx:if="{{pay.paid==0}}">
+        <text class='no-coupon-text'>暂无订单</text>
+      </view>
+    </swiper-item>
+    <swiper-item >
+      <view wx:if="{{pay.cancelpay[0]}}" class='use-coupon-child' wx:for="{{pay.cancelpay}}" wx:for-item="item" wx:key="index">
+        <view  data-content='{{item.orderNo}}' bindtap='enterorderdetail'>
+          <view class='use-coupon-head'>
+            <view>{{item.orderNo}}</view>
+            <view>{{item.createDate}}</view>
+          </view>
+          <view class='use-coupon-center'>{{item.packageName}}</view>
+          <view class='use-coupon-bottom'>
+            <view>
+              <text>{{item.candidateName}}</text>
+              <text>{{item.mobile||"暂无"}}</text>
+            </view>
+            <view>已取消</view>
+          </view>
+        </view>
+        <view class='use-coupon-child-shopdetail'>
+          <view>
+            <text>实付款:</text>￥{{item.actualPay||0}} </view>
+          <view class='use-coupon-child-button'>
+            <!-- <view>取消订单</view>
+            <view>立即支付</view> -->
+          </view>
+        </view>
+      </view>
+      <view class='no-coupon-child' wx:if="{{pay.cancelpay==0}}">
+        <text class='no-coupon-text'>暂无订单</text>
+      </view>
+    </swiper-item>
+  </swiper>
+
+</view>

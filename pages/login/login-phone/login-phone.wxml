@@ -1,0 +1,38 @@
+<view class="login-phone">
+  <view class="login-phone-header">
+    <image src="{{imageUrl}}login-bj.png" class="_image f9c2a990"></image>
+  </view>
+  <view class="login-input">
+    <image class="input-left-icon" src="{{imageUrl}}user-name.png" mode="widthFix"></image>
+    <input focus type="text" bindinput='chanceinput' value='{{username}}' placeholder-style="color:#8E8E8E" placeholder="手机号 / 邮箱 / 用户名" class="_input f9c2a990" />
+    <!-- <view>
+      <image class="input-right-icon" src="{{imageUrl}}so.png" mode="widthFix"></image>
+    </view> -->
+  </view>
+  <view class="f9c2a990 login-input">
+    <image class="input-left-icon" src="{{imageUrl}}password.png" mode="widthFix"></image>
+    <input wx:if="{{eyes.passwordshow=='password'}}" bindinput='getcontent' type="password" placeholder-style="color:#8E8E8E" placeholder="密码" class="_input" value="{{eyes.passwords}}" />
+    <input wx:if="{{eyes.passwordshow=='text'}}" bindinput='getcontent' type="text" placeholder-style="color:#8E8E8E" placeholder="密码" class="_input" value="{{eyes.passwords}}" />
+    <view class='eyes' bindtap='showpassword'>
+      <image src="{{eyes.img.closeeye}}" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class=" service-agreement">
+    <view>登录即同意
+      <text bindtap='enterAgreement'>《职兔职业背调服务协议》</text>
+    </view>
+  </view>
+  <view class="sign-in">
+    <!-- <navigator url="../login-phone/login-phone" hover-class="none" class="_navigator "> -->
+    <button bindtap="login" class="_button">登录</button>
+    <!-- </navigator> -->
+  </view>
+  <view class="btns">
+    <navigator url="../registration/registration" hover-class="none" class="_navigator">
+      <text class="tor-registration">立即注册</text>
+    </navigator>
+    <navigator url="../forget-password/forget-password" hover-class="none" class="_navigator">
+      <text class="forget-password">忘记密码</text>
+    </navigator>
+  </view>
+</view>

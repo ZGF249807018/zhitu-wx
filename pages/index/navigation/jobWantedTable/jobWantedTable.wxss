@@ -1,0 +1,82 @@
+page {
+  background: #f5f5f5;
+}
+
+.jobWantedTable {
+  width: 100%;
+  background: #f5f5f5;
+}
+
+.jobWantedTable-code {
+  padding: 40rpx;
+}
+
+.jobWantedTable-code-child {
+  background-size: 100% 100%;
+  box-shadow: 0 0 20rpx #f5f5f5;
+  border-radius: 24rpx;
+}
+
+.jobWantedTable-code-child>view:first-child {
+  padding-top: 20rpx;
+  text-align: center;
+  color: #2d7eed;
+  font-size: 28rpx;
+}
+
+.jobWantedTable-code-child>view:nth-child(2) {
+  text-align: center;
+  margin: 50rpx 0;
+}
+
+.jobWantedTable-code-child>view:nth-child(2)>image {
+  width: 250rpx;
+  height: 250rpx;
+}
+
+.jobWantedTable-code-child>view:nth-child(3) {
+  display: flex;
+  border-top: 1rpx solid #e0e0e0;
+}
+
+.jobWantedTable-code-child>view:nth-child(3)>button {
+  width: 50%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background: white;
+  color: #8e8e8e;
+  font-size: 28rpx;
+  border: 1px solid transparent;
+  border-radius:0;
+}
+button::after {
+  border: none;
+}
+.jobWantedTable-code-child>view:nth-child(3)>button:first-child {
+  border-right: 1rpx solid #e0e0e0;
+  border-bottom-left-radius: 24rpx;
+}
+
+.jobWantedTable-code-child>view:nth-child(3)>button:last-child {
+  border-bottom-right-radius: 24rpx;
+}
+
+.jobWantedTable-code-child>view:nth-child(3) .action {
+  color: #2da0f4;
+}
+
+.jobWantedTable-instructions {
+  padding: 0 60rpx;
+}
+
+.jobWantedTable-instructions>view:first-child {
+  margin: 20rpx 0;
+  color: #2da0f4;
+  font-size: 36rpx;
+}
+
+.jobWantedTable-instructions text {
+  color: #333;
+  font-size: 28rpx;
+}

@@ -1,0 +1,30 @@
+<!--pages/index/meal-list/meal-list.wxml-->
+
+<view class="meal-list">
+  <radio-group bindchange="radioChange" class="_radio-group">
+    <label class="_label  meal-item" wx:key="mealListData.id" key="{{mealListData.id}}" wx:for="{{mealListData}}" wx:for-index="index" wx:for-item="item">
+      <view class="_view ">
+        <radio value="{{item.id}}" color="#2DA0F4" checked="{{index === current}}" class="_radio 96d95cc6" />
+      </view>
+      <view class="_view  meal-data">
+        <view class="_view  meal-header">
+          <view class="_view  meal-header-name">
+            {{ item.name }}
+            <!-- <text class="_text  meal-time"> 3天出报告 </text> -->
+            <text class="_text  meal-time" wx:if="{{item.name=='极速版A'}}">秒出报告</text>
+            <text class="_text  meal-time" wx:if="{{item.name=='极速版B'}}">3个工作日出报告</text>
+            <text class="_text  meal-time" wx:if="{{item.name=='标准版'}}">3个工作日出报告</text>
+            <text class="_text  meal-time" wx:if="{{item.name=='深度版'}}">5个工作日出报告</text>
+          </view>
+          <view class="_view  meal-header-price">
+            ￥{{ item.price }}
+          </view>
+        </view>
+        <view class="_view  meal-text">
+          <text class="_text  meal-text-title">{{ item.childCount }}个维度背调项目</text>
+          <text class="_text  meal-text-desc">{{ item.description }}</text>
+        </view>
+      </view>
+    </label>
+  </radio-group>
+</view>

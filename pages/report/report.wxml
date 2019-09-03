@@ -1,0 +1,1007 @@
+<view class='body'>
+  <view class='head-message'>
+    <view class='names'>{{candidatemessage.candidateName}}</view>
+    <view class='induce'>
+      <text wx:if="{{candidate.position}}">{{candidate.position}} </text>
+      <text wx:if="{{candidate.position}}">/</text>
+      <text wx:if="{{candidate.workingNum===1}}"> 1-3年工作经验</text>
+      <text wx:if="{{candidate.workingNum===2}}"> 3-5年工作经验</text>
+      <text wx:if="{{candidate.workingNum===3}}"> 5-10年工作经验</text>
+      <text wx:if="{{candidate.workingNum===4}}"> 10年以上工作经验</text>
+      <text wx:if="{{candidate.workingNum}}">/</text>
+      <text> {{candidatemessage.packageName}} </text>
+    </view>
+    <view class='info'>
+      <view>
+        <image src="{{imageUrl}}add-select-phone-icon.png"></image>
+        <text>{{candidate.mobile?candidate.mobile:'无'}}</text>
+      </view>
+      <view>
+        <image src='{{imageUrl}}authentication.png'></image>
+        <text>{{candidate.idCard?candidate.idCard:'无'}}</text>
+      </view>
+      <view>
+        <image src='{{imageUrl}}time.png'></image>
+        {{candidatemessage.reportTime?candidatemessage.reportTime:'无'}}
+      </view>
+    </view>
+  </view>
+  <view class='space'>
+  </view>
+  <!-- 风险提示 -->
+  <view class='danger'>
+    <view class='tishi' bindtap='changeToggle' data-id='0'>
+      <image src='{{imageUrl}}risk-warning.png' class='right'></image>
+      <text>风险提示</text>
+      <image src='{{imageUrl}}index-meal-icon2.png' class="left {{selectedFlag[0] ? '' :'rotateRight'}}"></image>
+    </view>
+    <view class='dangerList' wx:if="{{selectedFlag[0]}}">
+      <view>查得{{badbehavior.count||0}}条疑似社会负面记录</view>
+      <view>查得{{financialRisk.id?1:0}}条金融黑名单</view>
+      <view wx:if="{{zhitushow.administrativeExportshow}}">{{administrativeExport.count?'行政披露信息':'没有行政披露信息'}}</view>
+      <view wx:if="{{!cvStaues==1}}">履历信息存在部分偏差</view>
+    </view>
+
+  </view>
+  <!-- 基础信息 -->
+  <view class='base infos'>
+    <view class='tishi' data-id='1' bindtap='changeToggle'>
+      <image src='{{imageUrl}}Id-card.png' class='right'></image>
+      <text>基础信息</text>
+      <image src='{{imageUrl}}index-meal-icon2.png' class="left {{selectedFlag[1] ? '' :'rotateRight'}}"></image>
+    </view>
+
+    <view class='base-info' wx:if="{{selectedFlag[1]}}">
+      <view class='list'>
+        <text>姓名</text>
+        <view class='right'> {{candidate.name||''}}</view>
+      </view>
+      <view class='lists'>
+        <text>身份证号</text>
+        <view class='right'>{{candidate.idCard||''}}</view>
+      </view>
+      <view class='lists'>
+        <text>手机号</text>
+
+        <view class='right'>{{candidate.mobile||''}}</view>
+      </view>
+      <view class='lists'>
+        <text>邮箱</text>
+
+        <view class='right'>{{candidate.email||''}}</view>
+      </view>
+      <view class='lists'>
+        <text>应聘岗位</text>
+
+        <view class='right'>{{candidate.position||''}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 身份验证 -->
+  <view class='shenfen infos'>
+    <view class='tishi' data-id='2' bindtap='changeToggle'>
+      <image src='{{imageUrl}}authentication.png' class='right'></image>
+      <text>身份验证</text>
+      <image src='{{imageUrl}}index-meal-icon2.png' class="left {{selectedFlag[2] ? '' :'rotateRight'}} "></image>
+    </view>
+
+    <view class='base-info' wx:if="{{selectedFlag[2]}}">
+      <view class='list'>
+        <text>身份证实名认证</text>
+
+        <view class='right'>实名认证通过</view>
+      </view>
+      <view class='lists'>
+        <text>手机实名认证</text>
+
+        <view class='right'>{{mobileValidation.result}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 户籍信息 -->
+  <view class='house infos'>
+    <view class='tishi' data-id='3' bindtap='changeToggle'>
+      <image src='{{imageUrl}}household.png' class='right'></image>
+      <text>户籍信息</text>
+      <image src='{{imageUrl}}index-meal-icon2.png' class="left {{selectedFlag[3] ? '' :'rotateRight'}}"></image>
+    </view>
+
+    <view class='base-info' wx:if="{{selectedFlag[3]}}">
+      <view class='list'>
+        <text>性别</text>
+
+        <view class='right'>{{candidate.sex}}</view>
+      </view>
+      <view class='lists'>
+        <text>籍贯</text>
+
+        <view class='right'>{{candidate.nativeAddress}}</view>
+      </view>
+      <view class='lists'>
+        <text>出生日期</text>
+
+        <view class='right'>{{candidate.birthday}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 运行商信息 -->
+  <view class='yunying infos' wx:if="{{zhitushow.operatorInformationshow ==1}}">
+    <view class='tishi' data-id='4' bindtap='changeToggle'>
+      <image src='{{imageUrl}}Operator-information.png' class='right'></image>
+      <text>运营商信息</text>
+      <image src='{{imageUrl}}index-meal-icon2.png' class="left {{selectedFlag[4] ? '' :'rotateRight'}}"></image>
+    </view>
+
+    <view class='base-info' wx:if="{{selectedFlag[4]}}">
+      <view class='list'>
+        <text>手机号运营商</text>
+        <view class='right' wx:if="{{operatorInformation.belongCode == 0}}">{{operatorInformation.carrierName}}          </view>
+        <view class='right' wx:if="{{operatorInformation.belongCode != 0}}">{{operatorInformation.belongMessage}}          </view>
+      </view>
+      <view class='lists'>
+        <text>手机号归属地</text>
+
+        <view class='right' wx:if="{{operatorInformation.belongCode == 0}}">{{operatorInformation.belongCity}}          </view>
+      <view class='right' wx:if="{{operatorInformation.belongCode != 0}}">{{operatorInformation.belongMessage}}          </view>
+      </view>
+      <view class='lists'>
+        <text>手机在网时长</text>
+
+        <view class='right' wx:if="{{operatorInformation.intervalCode == 200}}">{{operatorInformation.intervalDescription }}</view>
+        <view class='right' wx:if="{{operatorInformation.intervalCode != 200}}">{{operatorInformation.intervalMessage }}</view>
+      </view>
+      <view class='lists'>
+        <text>手机在网状态</text>
+        <view class='right' wx:if="{{operatorInformation.statusCode == 200}}">{{operatorInformation.statusDescription  }}</view>
+        <view class='right' wx:if="{{operatorInformation.statusCode != 200}}">{{operatorInformation.statusMessage  }}</view>
+      </view>
+      <view class='lists'>
+        <view class='shuoming'>
+          *数据说明：核实该候选人手机号码运营商品牌、号码归属地、号码归属地、号码在网时长、号码在网状态、数据覆盖中国移动、中国电信、中国联通。
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 社会负面记录 -->
+  <view class='shebad infos' wx:if="{{zhitushow.badbehaviorshow==1}}">
+    <view class='tishi' data-id='5' bindtap='changeToggle'>
+      <image src='{{imageUrl}}Negative-social-information.png' class='right'></image>
+      <text>社会负面记录</text>
+      <image src='{{imageUrl}}index-meal-icon2.png' class="left {{selectedFlag[5] ? '' :'rotateRight'}}"></image>
+    </view>
+
+    <view class='base-info' wx:if="{{selectedFlag[5]}}">
+      <view class='iftrue'>
+        <text wx:if="{{badbehavior.caseType}}">查得{{1}}条疑似社会负面记录</text>
+        <text wx:if="{{!badbehavior.caseType}}">未匹配到负面记录</text>
+      </view>
+      <view class='list' wx:if="{{badbehavior.caseType}}">
+        <text> 涉案类型(名称)</text>
+
+        <view class='right'>{{badbehavior.source}}</view>
+      </view>
+      <view class='lists' wx:if="{{badbehavior.caseType}}">
+        <text>案件时间段</text>
+
+        <view class='right'>{{badbehavior.time}}</view>
+      </view>
+      <view class='lists' wx:if="{{badbehavior.caseType}}">
+        <text>案件级别</text>
+
+        <view class='right'>{{badbehavior.level || ''}}</view>
+      </view>
+      <view class='lists' wx:if="{{badbehavior.caseType}}">
+        <text>案件类型</text>
+
+        <view class='right'>{{badbehavior.caseType}}</view>
+      </view>
+      <view class='lists' wx:if="{{badbehavior.caseType}}">
+        <text>案件数量</text>
+
+        <view class='right'>{{1}}</view>
+      </view>
+      <view class='message'>
+        <view class='shuoming'>
+          *数据说明：通过中国大陆官方机构对外披露的公开信息核实被调查人是否存在社会负面记录，核查范围包括前科、在逃、吸毒、涉毒。
+        </view>
+      </view>
+
+    </view>
+  </view>
+  <!-- 金融风险信息 -->
+  <view class='price infos' wx:if="{{zhitushow.financialRiskshow==1}}">
+    <view class='tishi' data-id='6' bindtap='changeToggle'>
+      <image src='{{imageUrl}}Financial-risk-information.png' class='right'></image>
+      <text>金融风险信息</text>
+      <image src='{{imageUrl}}index-meal-icon2.png' class="left {{ selectedFlag[6]? '' :'rotateRight'}}"></image>
+    </view>
+
+    <view class='base-info' wx:if="{{selectedFlag[6]}}">
+      <view class='iftrue title'>
+        金融黑名单
+      </view>
+      <view class='iftrue title titleact'>
+        <text wx:if="{{financialRisk.id}}">查得{{financialRisk.id?financialRisk.res:0}}条金融黑名单信息</text>
+        <text wx:if="{{!financialRisk.id}}">未命中金融黑名单信息</text>
+      </view>
+      <view class='iftrue title'>
+        多头借贷
+      </view>
+      <view class='list'>
+        <text>多头客查询</text>
+
+        <view class='right' wx:if="{{borrowingRisk == 1}}">命中</view>
+        <view class='right' wx:if="{{borrowingRisk != 1}}">未命中</view>
+      </view>
+      <view class='lists'>
+        <text>历史逾期平台数</text>
+
+        <view class='right'>{{borrowing.overdueNum}}</view>
+      </view>
+      <view class='lists'>
+        <text>历史注册平台数</text>
+
+        <view class='right'>{{borrowing.registerNum}}</view>
+      </view>
+      <view class='lists'>
+        <text>历史放贷平台数</text>
+
+        <view class='right'>{{borrowing.loansNum}}</view>
+      </view>
+      <view class='lists'>
+        <text>历史还款平台数</text>
+
+        <view class='right'>{{borrowing.debtNum}}</view>
+      </view>
+      <view class='lists'>
+        <text>历史拒贷平台数</text>
+
+        <view class='right'>{{borrowing.rejectNum}}</view>
+      </view>
+      <view class='message'>
+        <view class='shuoming'>
+          *数据说明：通过互联网大数据分析候选人是否存在金融欺诈嫌疑、借贷黑名单、多头借贷及逾期信息等。
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 最高学历 -->
+  <view class='highsty infos' wx:if="{{zhitushow.highestshow==1}}">
+    <view class='tishi' data-id='7' bindtap='changeToggle'>
+      <image src='{{imageUrl}}top-education-background.png' class='right'></image>
+      <text>最高学历</text>
+      <image src='{{imageUrl}}index-meal-icon2.png' class="left {{selectedFlag[7] ? '' :'rotateRight'}}"></image>
+    </view>
+    <view class='base-info' wx:if="{{selectedFlag[7]}}">
+      <view class='tested'>
+        <text wx:if="{{!highest}}">暂无法核验</text>
+        <text wx:if="{{highest.res===1}}">已核验</text>
+        <text wx:if="{{highest.res===5}}">已核验</text>
+        <text wx:if="{{highest.res===2}}">查无</text>
+
+        <image src='{{imageUrl}}top-degree-verification.png'></image>
+      </view>
+      <view class='lists'>
+        <text>学校</text>
+
+        <view class='right'>{{highest.schoolName}}</view>
+      </view>
+      <view class='lists'>
+        <text>学历</text>
+
+        <view class='right'>{{highest.diploma}}</view>
+      </view>
+      <view class='lists'>
+        <text>学历类别</text>
+
+        <view class='right'>{{highest.enrollStyle}}</view>
+      </view>
+      <view class='lists'>
+        <text>毕业时间</text>
+
+        <view class='right'>{{highest.gradTime}}</view>
+      </view>
+      <view class='lists'>
+        <text>证书编号</text>
+
+        <view class='right'>{{highest.gradeNo||""}}</view>
+      </view>
+      <view class='message'>
+        <view class='shuoming'>
+          *数据说明：核验自2001年以来国家承认的各类高等教育学历证书电子注册信息，包括研究生、普通本专科、成人本专科、网络教育、开放教育、高等教育自学考试以及高等教育学历文凭考试等。
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 职业资格 -->
+  <view class='shebad infos' wx:if="{{zhitushow.professionalQualificationshow==1}}">
+    <view class='tishi' data-id='8' bindtap='changeToggle'>
+      <image src='{{imageUrl}}Professional-post.png' class='right'></image>
+      <text>职业资格</text>
+      <image src='{{imageUrl}}index-meal-icon2.png' class="left {{selectedFlag[8] ? '' :'rotateRight'}}"></image>
+    </view>
+    <view class='base-info' wx:if="{{selectedFlag[8]}}">
+      <view class='iftrue'>
+        <text wx:if="{{professionalQualification.length}}">查得{{professionalQualification.length||0}}条职业资格信息</text>
+        <text wx:if="{{!professionalQualification.length}}">查无职业资格信息</text>
+      </view>
+      <!-- 第一条 -->
+      <view wx:for="{{professionalQualification}}" wx:index="{{index}}" wx:key="{{key}}" wx:item="{{item}}">
+        <view class='list professional list-item'>
+          <view>
+            <image src='{{imageUrl}}strip.png'></image>
+          </view>
+          <text>第{{index+1}}条</text>
+        </view>
+        <view class='list'>
+          <text>证书编号</text>
+          <view class='right professional-right'>{{item.certificateNum||""}}</view>
+        </view>
+        <view class='lists'>
+          <text>职业名称</text>
+          <view class='right professional-right'>{{item.professional}}</view>
+        </view>
+        <view class='lists'>
+          <text>级别</text>
+          <view class='right professional-right'>{{item.level}}</view>
+        </view>
+        <view class='lists'>
+          <text>理论考试成绩</text>
+          <view class='right professional-right'>{{item.text}}</view>
+        </view>
+        <view class='lists'>
+          <text>操作考试成绩</text>
+          <view class='right professional-right'>{{item.computer}}</view>
+        </view>
+        <view class='lists'>
+          <text>数据上报单位</text>
+          <view class='right professional-right'>{{item.report}}</view>
+        </view>
+      </view>
+      <view class='message'>
+        <view class='shuoming'>
+          *数据说明：通过人力资源和社会保障部数据库查询候选人职业资格信息。
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 行政披露信息 -->
+  <view class='shebad infos' wx:if="{{zhitushow.administrativeExportshow==1}}">
+    <view class='tishi' data-id='9' bindtap='changeToggle'>
+      <image src='{{imageUrl}}Administrative-flaw.png' class='right'></image>
+      <text>行政披露信息</text>
+      <image src='{{imageUrl}}index-meal-icon2.png' class="left {{selectedFlag[9] ? '' :'rotateRight'}}"></image>
+    </view>
+    <view class='base-info' wx:if="{{selectedFlag[9]}}">
+      <view class='iftrue'>
+        <view class='administrative-message'>
+          <text wx:if="{{administrativeExport.count}}"> 命中行政披露信息：执行总次数{{administrativeExport.count||0}}次，执行总金额{{administrativeExport.totalAmount||0}}</text>
+          <text wx:if="{{!administrativeExport.count}}">查无行政披露信息</text>
+        </view>
+      </view>
+      <!-- 第一条 -->
+      <view wx:for="{{administrativeExport.courtDefaultList}}" wx:index="{{index}}" wx:key="{{key}}" wx:item="{{item}}">
+        <view class='list professional list-item'>
+          <view>
+            <image src='{{imageUrl}}strip.png'></image>
+          </view>
+          <text>第{{index+1}}条</text>
+        </view>
+        <view class='list'>
+          <text>法院名称</text>
+          <view class='right administrative-right'>{{item.courtName}}</view>
+        </view>
+        <view class='lists'>
+          <text>立案时间</text>
+          <view class='right administrative-right'>{{item.fillingDate}}</view>
+        </view>
+        <view class='lists'>
+          <text>发布时间</text>
+          <view class='right administrative-right'>{{item.releaseTime}}</view>
+        </view>
+        <view class='lists'>
+          <text> 执行金额(元)</text>
+          <view class='right administrative-right'>{{item.executeDarget}}</view>
+        </view>
+        <view class='lists' style='display:flex;'>
+          <text>案件详情</text>
+          <view class='right administrative-test'>{{item.caseInfo}}</view>
+        </view>
+      </view>
+      <view class='message'>
+        <view class='shuoming'>
+          *数据说明：中国大陆官方机构公开披露的行政披露信息。
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 法院涉法涉诉信息 -->
+  <view class='shebad infos' wx:if="{{zhitushow.courtCaseshow==1}}">
+    <view class='tishi' data-id='10' bindtap='changeToggle'>
+      <image src='{{imageUrl}}courts-visits.png' class='right'></image>
+      <text>法院涉法涉诉信息</text>
+      <image src='{{imageUrl}}index-meal-icon2.png' class="left {{ selectedFlag[10]? '' :'rotateRight'}}"></image>
+    </view>
+    <view class='base-info' wx:if="{{selectedFlag[10]}}">
+      <view class='iftrue court-tit'>
+        <text wx:if="{{courtCase.cpws}}">裁判文书信息</text>
+        <text class='titleact' wx:if="{{!courtCase.cpws}}">查无裁判文书信息</text>
+      </view>
+      <view wx:if="{{courtCase.cpws}}">
+        <view class='list'>
+          <text>案件标题</text>
+          <view class='right professional-right'>{{courtCase.cpws.title}}</view>
+        </view>
+        <view class='lists'>
+          <text>审理程序</text>
+          <view class='right professional-right'>{{courtCase.cpws.content}}</view>
+        </view>
+        <view class='lists'>
+          <text>审理时间</text>
+          <view class='right professional-right'>{{courtCase.cpws.reviewTime}}</view>
+        </view>
+      </view>
+      <view class='iftrue court-tit'>
+        <text>执行公告信息</text>
+      </view>
+      <view wx:if="{{!courtCase.zxgg.title}}" class='iftrue court-tit'>
+        <text class='titleact'>查无执行公告信息</text>
+      </view>
+      <view class='list' wx:if="{{courtCase.zxgg.title}}">
+        <text>案件标题</text>
+        <view class='right professional-right'>{{courtCase.zxgg.title}}</view>
+      </view>
+      <view class='lists' wx:if="{{courtCase.zxgg.title}}">
+        <text>审结时间</text>
+        <view class='right professional-right'>{{courtCase.zxgg.reviewTime}}</view>
+      </view>
+      <view class='lists' wx:if="{{courtCase.zxgg.title}}">
+        <text>概要提示</text>
+        <view class='right professional-right'>{{courtCase.zxgg.content}}</view>
+      </view>
+      <view class='message'>
+        <view class='shuoming'>
+          *数据说明：中国大陆官方机构公开披露的信息，数据类型包括：裁判文书/执行公告/失信/开庭公告/安检流程/曝光台信息。
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 被执行人信息 -->
+  <view class='shebad infos' wx:if="{{zhitushow.performRecordsshow==1}}">
+    <view class='tishi' data-id='11' bindtap='changeToggle'>
+      <image src='{{imageUrl}}performed.png' style='width:29rpx;height:21rpx;' class='right'></image>
+      <text>被执行人、失信被执行人信息</text>
+      <image src='{{imageUrl}}index-meal-icon2.png' class="left {{selectedFlag[11] ? '' :'rotateRight'}}"></image>
+    </view>
+    <view class='base-info' wx:if="{{selectedFlag[11]}}">
+      <view class='iftrue perform-tit'>
+        <view class='administrative-message'>
+          <text wx:if="{{performRecords.length}}">查得{{performRecords.length||0}}条被执行人信息</text>
+          <text wx:if="{{!performRecords.length}}">查无被执行人信息</text>
+        </view>
+      </view>
+      <!-- 第一条 -->
+      <view wx:for="{{performRecords}}" wx:index="{{index}}" wx:key="{{key}}" wx:item="{{item}}">
+        <view class='list professional list-item'>
+          <view>
+            <image src='{{imageUrl}}strip.png'></image>
+          </view>
+          <text>第{{index+1}}条</text>
+        </view>
+        <view class='list'>
+          <text>执行法院</text>
+          <view class='right professional-right'>{{item.courtName}}</view>
+        </view>
+        <view class='lists'>
+          <text>案号</text>
+          <view class='right professional-right'>{{item.caseCode}}</view>
+        </view>
+        <view class='lists'>
+          <text>被执行的(元)</text>
+          <view class='right professional-right'>{{item.execMoney}}</view>
+        </view>
+        <view class='lists'>
+          <text>立案日期</text>
+          <view class='right professional-right'>{{item.regDate}}</view>
+        </view>
+        <view class='lists'>
+          <text>案件状态</text>
+          <view class='right professional-right'>{{item.caseState}}</view>
+        </view>
+      </view>
+      <view class='message'>
+        <view class='shuoming'>
+          *数据说明：中国大陆官方机构公开披露的信息，输出内容包括法院名称、立案时间、执行金额(元)、执行人姓名/名称、身份证号码/组织机构代码、案号。
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 失信被执行人信息 -->
+  <view class='shebad infos' wx:if="{{zhitushow.brokenPromisesshow==1}}">
+    <view class='base-info' wx:if="{{selectedFlag[11]}}">
+      <view class='iftrue perform-tit'>
+        <view class='administrative-message'>
+          <text wx:if="{{brokenPromises.length}}">查得{{brokenPromises.length || 0}}条失信被执行人信息</text>
+          <text wx:if="{{!brokenPromises.length}}">暂无失信被执行人信息</text>
+        </view>
+      </view>
+      <!-- 第一条 -->
+      <view wx:for="{{brokenPromises}}" wx:index="{{index}}" wx:key="{{key}}" wx:item="{{item}}">
+        <view class='list professional list-item'>
+          <view>
+            <image src='{{imageUrl}}strip.png'></image>
+          </view>
+          <text>第{{index+1}}条</text>
+        </view>
+        <view class='list'>
+          <text>执行法院</text>
+          <view class='right professional-right'>{{item.courtName}}</view>
+        </view>
+        <view class='lists'>
+          <text>案号</text>
+          <view class='right professional-right'>{{item.caseCode}}</view>
+        </view>
+        <view class='lists'>
+          <text>立案日期</text>
+          <view class='right professional-right'>{{item.regDate}}</view>
+        </view>
+        <view class='lists'>
+          <text>发布日期</text>
+          <view class='right professional-right'>{{item.publishDate}}</view>
+        </view>
+        <view class='lists'>
+          <text>省份</text>
+          <view class='right professional-right'>{{item.areaName}}</view>
+        </view>
+        <view class='lists'>
+          <text>被执行人的履行情况</text>
+          <view class='right professional-right'>{{item.performance}}</view>
+        </view>
+        <view class='lists professional-bigcontent'>
+          <view>失信被执行人的具体情况</view>
+          <view class='right administrative-test'>{{item.disruptTypeName}}</view>
+        </view>
+        <view class='lists professional-bigcontent'>
+          <view>法律生效文书确定的义务</view>
+          <view class='right administrative-test'>{{item.duty}}</view>
+        </view>
+      </view>
+      <view class='message'>
+        <view class='shuoming'>
+          *数据说明：中国大陆官方机构公开披露的信息，输出内容包括：法院名称；立案时间；发布时间；案号；省份；执行依据文号；做出执行依据单位；被执行人的履行情况；失信被执行人具体情形；法律生效文书确定的义务；标识自然人或企业。
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 个人工商信息 -->
+  <view class='shebad infos' wx:if="{{zhitushow.legalPersonshow==1}}">
+    <view class='tishi' data-id='12' bindtap='changeToggle'>
+      <image src='{{imageUrl}}Personal-business-information.png' style='width:29rpx;height:21rpx;' class='right'></image>
+      <text>个人工商信息</text>
+      <image src='{{imageUrl}}index-meal-icon2.png' class="left {{selectedFlag[12] ? '' :'rotateRight'}}"></image>
+    </view>
+    <view wx:if="{{selectedFlag[12]}}">
+      <view class='base-info'>
+        <view class='iftrue perform-tit'>
+          <view class='administrative-message' style='color:#333333;'>
+            担任法人信息
+          </view>
+        </view>
+        <view class='iftrue perform-tit'>
+          <view class='administrative-message'>
+            <text wx:if="{{legalPerson.representative.length}}">查得{{legalPerson.representative.length||0}}条担任法人信息</text>
+            <text wx:if="{{!legalPerson.representative.length}}">暂无担任法人信息</text>
+          </view>
+        </view>
+        <!-- 第一条 -->
+        <view wx:for="{{legalPerson.representative}}" wx:index="{{index}}" wx:key="{{key}}" wx:item="{{item}}">
+          <view class='list professional list-item'>
+            <view>
+              <image src='{{imageUrl}}strip.png'></image>
+            </view>
+            <text>第{{index+1}}条</text>
+          </view>
+          <view class='list'>
+            <text>法人姓名</text>
+            <view class='right professional-right'>{{item.person_name}}</view>
+          </view>
+          <view class='lists'>
+            <text>企业(机构)名称</text>
+            <view class='right professional-right'>{{item.ent_name}}</view>
+          </view>
+          <view class='lists'>
+            <text> 企业(机构)注册号</text>
+            <view class='right professional-right'>{{item.credit_code}}</view>
+          </view>
+          <view class='lists'>
+            <text>企业(机构)性质</text>
+            <view class='right professional-right'>{{item.ent_type}}</view>
+          </view>
+          <view class='lists'>
+            <text>企业(机构)注册资本(万)</text>
+            <view class='right professional-right'>{{item.reg_capital}}</view>
+          </view>
+          <view class='lists'>
+            <text> 企业(机构)注册币种</text>
+            <view class='right professional-right'>{{item.reg_cap_currency}}</view>
+          </view>
+          <view class='lists'>
+            <text>企业(机构)状态</text>
+            <view class='right professional-right'>{{item.ent_status}}</view>
+          </view>
+        </view>
+      </view>
+      <!-- 担任股东信息 -->
+      <view class='base-info'>
+        <view class='iftrue perform-tit'>
+          <view class='administrative-message' style='color:#333333;'>
+            担任股东信息
+          </view>
+        </view>
+        <view class='iftrue perform-tit'>
+          <view class='administrative-message'>
+            <text wx:if="{{legalPerson.shareholder.length}}">查得{{legalPerson.shareholder.length||0}}条担任股东信息</text>
+            <text wx:if="{{!legalPerson.shareholder.length}}">暂无担任股东信息</text>
+          </view>
+        </view>
+        <!-- 第一条 -->
+        <view wx:for="{{legalPerson.shareholder}}" wx:index="{{index}}" wx:key="{{key}}" wx:item="{{item}}">
+          <view class='list professional list-item'>
+            <view>
+              <image src='{{imageUrl}}strip.png'></image>
+            </view>
+            <text>第{{index+1}}条</text>
+          </view>
+          <view class='lists'>
+            <text>企业(机构)名称</text>
+            <view class='right professional-right'>{{item.ent_name}}</view>
+          </view>
+          <view class='lists'>
+            <text>企业(机构)注册号</text>
+            <view class='right professional-right'>{{item.reg_no}}</view>
+          </view>
+          <view class='lists'>
+            <text> 企业(机构)性质</text>
+            <view class='right professional-right'>{{item.ent_type}}</view>
+          </view>
+          <view class='lists'>
+            <text>企业(机构)注册资本(万)</text>
+            <view class='right professional-right'>{{item.reg_capital}}</view>
+          </view>
+          <view class='lists'>
+            <text>企业(机构)注册币种</text>
+            <view class='right professional-right'>{{item.reg_cap_currency}}</view>
+          </view>
+          <view class='lists'>
+            <text>企业(机构)状态</text>
+            <view class='right professional-right'>{{item.ent_status}}</view>
+          </view>
+          <view class='lists'>
+            <text>出资比例</text>
+            <view class='right professional-right'>{{item.fund_ratio}}</view>
+          </view>
+        </view>
+      </view>
+      <!-- 担任高管信息 -->
+      <view class='base-info'>
+        <view class='iftrue perform-tit'>
+          <view class='administrative-message' style='color:#333333;'>
+            担任高管信息
+          </view>
+        </view>
+        <view class='iftrue perform-tit'>
+          <view class='administrative-message'>
+            <text wx:if="{{legalPerson.executive.length}}">查得{{legalPerson.executive.length||0}}条担任高管信息</text>
+            <text wx:if="{{!legalPerson.executive.length}}">暂无担任高管信息</text>
+          </view>
+        </view>
+        <!-- 第一条 -->
+        <view wx:for="{{legalPerson.executive}}" wx:index="{{index}}" wx:key="{{key}}" wx:item="{{item}}">
+          <view class='list professional list-item'>
+            <view>
+              <image src='{{imageUrl}}strip.png'></image>
+            </view>
+            <text>第{{index+1}}条</text>
+          </view>
+          <view class='lists'>
+            <text>企业(机构)名称</text>
+            <view class='right professional-right'>{{item.ent_name}}</view>
+          </view>
+          <view class='lists'>
+            <text> 企业(机构)注册号</text>
+            <view class='right professional-right'>{{item.reg_no}}</view>
+          </view>
+          <view class='lists'>
+            <text>企业(机构)性质</text>
+            <view class='right professional-right'>{{item.ent_type}}</view>
+          </view>
+          <view class='lists'>
+            <text>企业(机构)注册资本(万)</text>
+            <view class='right professional-right'>{{item.reg_capital}}</view>
+          </view>
+          <view class='lists'>
+            <text>企业(机构)注册币种</text>
+            <view class='right professional-right'>{{item.reg_cap_currency}}</view>
+          </view>
+          <view class='lists'>
+            <text>企业(机构)状态</text>
+            <view class='right professional-right'>{{item.ent_status}}</view>
+          </view>
+          <view class='lists'>
+            <text>职务</text>
+            <view class='right professional-right'>{{item.position}}</view>
+          </view>
+        </view>
+        <view class='message'>
+          <view class='shuoming'>
+            *数据说明：通过工商行政管理部门登记的官方注册信息查询个人在外担任企业法人代表、企业股东、企业主要管理人员的情况。
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 履历访谈 -->
+  <view class='beforeexprience' wx:if="{{work.length}}">
+    <view class='beforeexprienceitem'>
+      <view class='beforeexpeience-item-child'>
+        <image src='{{imageUrl}}Record-the-interview.png'></image>
+        <view>履历访谈</view>
+      </view>
+      <view class='beforeexpeience-item-childtwo'>
+        <view>顺序由近及远</view>
+      </view>
+    </view>
+
+    <view wx:for="{{work}}" wx:index="{{index}}" wx:key="{{key}}" wx:item="{{item}}">
+      <view class='onework'>
+        <view class='onework-tit' data-id='{{13+index}}' bindtap='changeToggle'>
+          <view>
+            <image src='{{imageUrl}}experience.png'></image>
+            <text>{{index+1}}</text>
+          </view>
+          <text>第{{index+1}}段工作经历访谈</text>
+          <image src='{{imageUrl}}index-meal-icon2.png' class="{{selectedFlag[13+index] ? '' :'rotateRight'}}"></image>
+        </view>
+        <view wx:if="{{selectedFlag[13+index]}}">
+          <view>
+            <view class='onework-chatmessage'>
+              <view>访谈对象信息</view>
+            </view>
+            <view class='onework-border'>
+              <view class='onework-chatpeople'>
+                <view>访谈对象</view>
+                <view>与候选人关系</view>
+                <view>访谈对象职位</view>
+                <view>共事时长</view>
+              </view>
+            </view>
+            <view class='onework-border'>
+              <view class='onework-chatpeople onework-detail-person'>
+                <view>{{item.workWitness.name}}</view>
+                <view>{{item.workWitness.relation}}</view>
+                <view>{{item.workWitness.position}}</view>
+                <view>{{item.workWitness.basicInfo}}</view>
+              </view>
+            </view>
+          </view>
+          <!-- 工作履历核实 -->
+          <view>
+            <view class='work-oktit'>
+              <view>工作履历核实</view>
+            </view>
+            <view>
+              <view class='work-okcontent work-okcontent-header'>
+                <view>核实项目</view>
+                <view>提交信息</view>
+                <view>核实结果</view>
+              </view>
+              <view class='work-okcontent'>
+                <view>雇主名称</view>
+                <view>{{item.workHistory.company}}</view>
+                <view>
+                  <text wx:if="{{!(item.workHistory.companyResult=='不一致')}}"> {{item.workHistory.companyResult}}</text>
+                  <text class='work-space' wx:if="{{item.workHistory.companyResult=='不一致'}}">{{item.workHistory.companyDescription}}</text> </view>
+              </view>
+              <view class='work-okcontent'>
+                <view>工作所在地</view>
+                <view>{{item.workHistory.workplace}}</view>
+                <view>
+                  <text wx:if="{{!(item.workHistory.workplaceResult=='不一致')}}">{{item.workHistory.workplaceResult}}</text>
+                  <text class='work-space' wx:if="{{item.workHistory.workplaceResult=='不一致'}}">{{item.workHistory.workplaceDescription}}</text>
+                </view>
+              </view>
+              <view class='work-okcontent'>
+                <view>任职时间</view>
+                <view>{{item.workHistory.period}}</view>
+                <view>
+                  <text wx:if="{{!(item.workHistory.periodResult=='不一致')}}">{{item.workHistory.periodResult}}</text>
+                  <text class='work-space' wx:if="{{item.workHistory.periodResult=='不一致'}}">{{item.workHistory.periodDescription}}</text>
+                </view>
+              </view>
+              <view class='work-okcontent'>
+                <view>任职方式</view>
+                <view>{{item.workHistory.pattern}}</view>
+                <view>
+                  <text wx:if="{{!(item.workHistory.patternResult=='不一致')}}">  {{item.workHistory.patternResult}}</text>
+
+                  <text class='work-space' wx:if="{{item.workHistory.patternResult=='不一致'}}">{{item.workHistory.patternDescription}}</text>
+                </view>
+
+              </view>
+              <view class='work-okcontent'>
+                <view>职位名称</view>
+                <view>{{item.workHistory.position}}</view>
+                <view>
+                  <text wx:if="{{!(item.workHistory.positionResult=='不一致')}}"> {{item.workHistory.positionResult}}</text>
+                  <text class='work-space' wx:if="{{item.workHistory.positionResult=='不一致'}}">{{item.workHistory.positionDescription}}</text>
+                </view>
+              </view>
+              <view class='work-okcontent'>
+                <view>薪酬范围</view>
+                <view>{{item.workHistory.salary}}</view>
+                <view>
+                  <text wx:if="{{!(item.workHistory.salaryResult=='不一致')}}"> {{item.workHistory.salaryResult}}</text>
+
+                  <text class='work-space' wx:if="{{item.workHistory.salaryResult=='不一致'}}">{{item.workHistory.salaryDescription}}</text>
+                </view>
+              </view>
+              <view class='work-okcontent'>
+                <view>汇报对象</view>
+                <view>{{item.workHistory.superior}}</view>
+                <view>
+                  <text wx:if="{{!(item.workHistory.superiorResult=='不一致')}}">{{item.workHistory.superiorResult}}</text>
+
+                  <text class='work-space' wx:if="{{item.workHistory.superiorResult=='不一致'}}">{{item.workHistory.superiorDescription}}</text>
+                </view>
+              </view>
+              <view class='work-okcontent'>
+                <view>团队组织架构 (上下级数量)</view>
+                <view>{{item.workHistory.duty}}</view>
+                <view>
+                  <text wx:if="{{!(item.workHistory.dutyResult=='不一致')}}">{{item.workHistory.dutyResult}}</text>
+
+                  <text class='work-space' wx:if="{{item.workHistory.dutyResult=='不一致'}}">{{item.workHistory.dutyDescription}}</text>
+                </view>
+              </view>
+              <view class='work-okcontent'>
+                <view>离职原因</view>
+                <view>{{item.workHistory.reason}}</view>
+                <view>
+                  <text wx:if="{{!(item.workHistory.reasonResult=='不一致')}}">{{item.workHistory.reasonResult}}</text>
+                  <text class='work-space' wx:if="{{item.workHistory.reasonResult=='不一致'}}">{{item.workHistory.reasonDescription}}</text>
+                </view>
+              </view>
+              <view class='work-oktwo'>
+                <view>是否存在重大违规违纪行为</view>
+                <view>{{item.workHistory.misconduct}}</view>
+              </view>
+              <view class='work-oktwo'>
+                <view>是否发生劳动争议或仲裁</view>
+                <view>{{item.workHistory.arbitration}}</view>
+              </view>
+              <view class='work-oktwo'>
+                <view>是否与公司签订敬业禁止协议</view>
+                <view>{{item.workHistory.nonCompetition}}</view>
+              </view>
+              <view class='work-oktwo'>
+                <view>是否符合再次录用条件</view>
+                <view>{{item.workHistory.employedAgain}}</view>
+              </view>
+            </view>
+          </view>
+          <!-- 工作表现核实 -->
+          <view class='work-performance-if'>
+            <view class='work-performance-tit'>工作表现核实</view>
+            <view class='work-performance-cont work-performance-cont-tit'>
+              <view>
+                <view>核实项目</view>
+              </view>
+              <view>结论</view>
+            </view>
+            <view wx:if="{{item.workPerformance}}" class='work-performance-cont'>
+              <view>
+                <view>专业能力</view>
+              </view>
+              <view class='text-left'>{{item.workPerformance.professionalAbility}}</view>
+            </view>
+            <view wx:if="{{item.workPerformance}}" class='work-performance-cont'>
+              <view>
+                <view>团队协作能力</view>
+              </view>
+              <view class='text-left'>{{item.workPerformance.cooperationAbility}}</view>
+            </view>
+            <view wx:if="{{item.workPerformance}}" class='work-performance-cont'>
+              <view>
+                <view>工作积极性</view>
+              </view>
+              <view class='text-left'>{{item.workPerformance.workingEnthusiasm}}</view>
+            </view>
+            <view wx:if="{{item.workPerformance}}" class='work-performance-cont'>
+              <view>
+                <view>突出优点或主要业绩</view>
+              </view>
+              <view class='text-left'>{{item.workPerformance.advantageAchievements}}</view>
+            </view>
+            <view wx:if="{{item.workPerformance}}" class='work-performance-cont'>
+              <view>
+                <view>缺点或待改进之处</view>
+              </view>
+              <view class='text-left'>{{item.workPerformance.shortcoming}}</view>
+            </view>
+            <view wx:if="{{item.workPerformance}}" class='work-performance-cont work-performance-cont-last'>
+              <view>
+                <view>给候选人打分</view>
+              </view>
+              <view class='text-left'>{{item.workPerformance.overallScore}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='data-end'>
+    <view>
+      <view>
+        <image src='{{imageUrl}}To-load.png'></image>
+      </view>
+      <view>全部加载完毕</view>
+    </view>
+  </view>
+  <view class='tabbar' wx:if="{{exmpletab}}">
+    <view bindtap="sendEmail">发送到邮箱</view>
+    <view bindtap="printTable">打印报告</view>
+  </view>
+  <view class='modal-bottom' wx:if="{{modalbottom}}">
+    <view></view>
+    <view>
+      <view class='modal-bottom-header'>发送到邮箱</view>
+      <view class='modal-bottom-center'>
+        <view>收件人</view>
+        <view>{{ tenantList.email||"" }} ></view>
+      </view>
+      <view class='modal-bottom-bottom'>
+        <view bindtap='cancelemailaddress'>取消</view>
+        <view bindtap='sendemailaddress'>发送</view>
+      </view>
+    </view>
+  </view>
+  <view class="modal" wx:if="{{ modalOpened }}">
+    <view class="modal-child">
+      <view>
+        <view class="modal-hader">{{modal.header}}</view>
+        <view class="modal-content">{{modal.content}}</view>
+        <view class="modal-btn">
+          <view bindtap="onModalClose">{{modal.buttonone}}</view>
+          <view bindtap="onModalClick">{{modal.buttontwo}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='modal-bottom' wx:if="{{modalbottomprint}}">
+    <view></view>
+    <view>
+      <view class='modal-bottom-header'>打印表格
+        <view class='print'>
+          选择打印机 >
+        </view>
+      </view>
+      <view class='modal-bottom-center'>
+        <view>{{print.num}}份</view>
+        <view class='increase'>
+          <view>
+            <image src="{{ https +'Print-less@1x.png' }}" bindtap='reduce'></image>
+          </view>
+          <text>{{print.num}}</text>
+          <view>
+            <image src="{{ https +'Print-increase@1x.png' }}" bindtap='increasenum'></image>
+          </view>
+        </view>
+      </view>
+      <view class='modal-bottom-bottom'>
+        <view bindtap='cancelemailaddress' bindtap='cancel'>取消</view>
+        <view bindtap='sendemailaddress' bindtap='print'>打印</view>
+      </view>
+    </view>
+  </view>
+</view>

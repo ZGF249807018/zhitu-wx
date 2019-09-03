@@ -1,0 +1,64 @@
+page{
+  background: #F5F5F5;
+}
+.helpCenter{
+  width: 100%;
+}
+.helpCenter-header{
+  width: 100%;
+  height: 262rpx;
+  background-image: url(http://39.98.171.198:80/wx-imgs/zhitu/imgs/helpcenterback.png);
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.helpCenter-header>view:first-child{
+  margin-bottom:  30rpx;
+}
+.helpCenter-header>view:first-child image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.helpCenter-header>view:first-child text{
+  font-size: 30rpx;
+  color: #ffffff;
+}
+.helpCenter-header>view:last-child{
+  color: #ffffff;
+  font-size: 24rpx;
+}
+.helpCenter-line{
+  background: #F5F5F5;
+  height: 20rpx;
+}
+.helpCenter-content-list{
+  background: white;
+}
+.helpCenter-content-list{
+  margin-top: 20rpx;
+}
+.helpCenter-content-list>view>view{
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.helpCenter-content-list>view:first-child{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 40rpx;
+  color: #333333;
+  font-size: 28prx;
+}
+.helpCenter-content-list>view:first-child>image{
+  width: 25rpx;
+  height: 14rpx;
+}
+.helpCenter-content-list-content{
+  padding: 0 40rpx;
+  padding-bottom: 10rpx;
+  box-sizing: border-box;
+  color: #8E8E8E;
+  font-size: 28rpx;
+}

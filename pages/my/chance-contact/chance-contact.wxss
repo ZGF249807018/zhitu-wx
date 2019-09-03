@@ -1,0 +1,55 @@
+
+
+.chance-contact {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #f5f5f5;
+}
+
+.inputcont {
+  height: 100rpx;
+  background: white;
+  margin-top: 20rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #333333;
+  position: relative;
+}
+.inputcont>image{
+  z-index: 5;
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 35rpx;
+}
+.ok {
+  margin-top: 300rpx;
+}
+
+.ok>view {
+  width: 550rpx;
+  height: 88rpx;
+  margin: 0 auto;
+  line-height: 88rpx;
+  background: rgba(45, 160, 244, 1);
+  box-shadow: 0px 10rpx 30rpx 0rpx rgba(45, 160, 244, 0.3);
+  border-radius: 44rpx;
+  text-align: center;
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: white;
+}
+.placeholderStyle {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #a3a3a3;
+}

@@ -1,0 +1,4 @@
+<view class="nullPage">
+<image bindtap='know'  src="{{https +'neverStart.png'}}"  />
+<!-- <button type="default" bindtap="toIndex">我知道了</button> -->
+</view>

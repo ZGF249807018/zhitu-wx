@@ -1,0 +1,77 @@
+<view class="coupons">
+  <view class="coupons-header">
+    <view bindtap="toggleCondition" data-logo="{{ 1 }}" class="{{ logo ===1 ? 'coupons-header-child' : '' }}">
+      可用优惠券({{couponsList.length}})
+    </view>
+    <view bindtap="toggleCondition" data-logo="{{ 2 }}" class="{{ logo ===2 ? 'coupons-header-child' : '' }}">
+      过期优惠券({{unusedCouponsList.length}})
+    </view>
+  </view>
+  <view class="coupons-content" wx:if="{{ logo ===1}}">
+    <view class="coupons-content-list" style="background-image: url({{https}}/youhuiquan.png); " wx:for="{{ couponsList }}" wx:key="key">
+      <view class="coupons-content-list-left">
+        <view>
+          <text>{{ item.cost/10 < 1 ? "" : "￥"}}</text> {{ item.cost }}
+          <text>{{ item.cost/10 < 1 ? "折" : "" }}</text>
+        </view>
+        <view>优惠券 </view>
+      </view>
+      <view class="coupons-content-list-right">
+        <view>{{ item.name }}</view>
+        <view>{{ item.start }} - {{ item.end }}</view>
+        <view class='usecoupons' bindtap='enterbacktunes'>
+          <text>立即使用</text>
+          <image src="{{ https + 'redgt@1x.png'}}"></image>
+        </view>
+      </view>
+    </view>
+
+
+    <image src="{{ https + 'Use-rules.png'}}" mode="scaleToFill" bindtap='showUseRules' />
+    <view class="coupons-content-null" wx:if="{{ couponsList.length===0 }}">
+      <image src="{{ https + 'no.png'}}" mode="scaleToFill" />
+      <text>暂无可用优惠券</text>
+    </view>
+    <view class="coupons-content-bottom">
+      <image src="{{ https + 'To-load.png'}}" mode="scaleToFill" />
+      <text>全部加载完毕</text>
+    </view>
+  </view>
+  <view class="coupons-content" wx:if="{{ logo ===2 }}">
+    <view class="coupons-content-list" style="background-image: url({{https}}/Expired-coupon.png);" wx:for="{{ unusedCouponsList }}" wx:key="key">
+      <view class="coupons-content-list-left">
+        <view>
+          <text>{{ item.cost < 1 ? "" : "￥"}}</text> {{ item.cost }}
+          <text>{{ item.cost < 1 ? "折" : "" }}</text>
+        </view>
+        <view>优惠券 </view>
+      </view>
+      <view class="coupons-content-list-right">
+        <view>{{ item.name }}</view>
+        <view>{{ item.start }} - {{ item.end }}</view>
+        <view class='usecoupons'>
+          <text class='grey'>已过期</text>
+          <!-- <image src="{{ https + 'redgt@1x.png'}}"></image> -->
+
+        </view>
+      </view>
+    </view>
+
+
+    <image src="{{ https + 'Use-rules.png'}}" mode="scaleToFill" bindtap='showUseRules'/>
+    <view class="coupons-content-null" wx:if="{{ unusedCouponsList.length===0 }}">
+      <image src="{{ https + 'no.png' }}" mode="scaleToFill" />
+      <text>{{
+        logo === 1  ?  "暂无可用优惠券" : "暂无过期优惠券"
+      }}</text>
+    </view>
+    <view class="coupons-content-bottom" wx:if="{{ unusedCouponsList.length===0?false:true }}">
+      <image src="{{ https + 'To-load.png' }}" mode="scaleToFill" />
+      <text>全部加载完毕</text>
+    </view>
+  </view>
+</view>
+<modal title="优惠券使用规则" confirm-text="确认" cancel-text="取消" hidden="{{onOff}}" bindconfirm="showUseRules" bindcancel="showUseRules">
+  <view>1.一张优惠券只能使用一次，每个订单只能选择一张优惠券。</view>
+  <view>2.优惠券额度大于订单额度时，最高抵扣金额为订单额度。</view>
+</modal>

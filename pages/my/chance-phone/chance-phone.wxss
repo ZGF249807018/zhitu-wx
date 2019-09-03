@@ -1,0 +1,92 @@
+.chance-contact {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #f5f5f5;
+}
+
+.inputcont {
+  height: 100rpx;
+  background: white;
+  margin-top: 20rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #333;
+  position: relative;
+}
+
+.ok {
+  margin-top: 100rpx;
+}
+
+.ok>view {
+  width: 550rpx;
+  height: 88rpx;
+  margin: 0 auto;
+  line-height: 88rpx;
+  background: rgba(45, 160, 244, 1);
+  box-shadow: 0px 10rpx 30rpx 0rpx rgba(45, 160, 244, 0.3);
+  border-radius: 44rpx;
+  text-align: center;
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: white;
+}
+
+.chance-contact-head {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #333;
+}
+
+.chance-contact-head>text:nth-of-type(2) {
+  display: inline-block;
+  margin-left: 20rpx;
+}
+
+.inputcont-second {
+  position: relative;
+  margin-top: 0;
+}
+
+.inputbord {
+  padding: 0 30rpx;
+}
+
+.inputbord>view {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.inputcont-second>text {
+  position: absolute;
+  z-index: 5;
+  top: 29rpx;
+  right: 30rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(45, 160, 244, 1);
+}
+.inputcont-second .code-text {
+  position: absolute;
+  z-index: 5;
+  top: 29rpx;
+  right: 30rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: #999;
+}
+.placeholderStyle {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #a3a3a3;
+}

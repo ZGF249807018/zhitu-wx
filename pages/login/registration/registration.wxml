@@ -1,0 +1,23 @@
+<view class="registration">
+  <view class="registration-input">
+    <image class="input-left-icon" src="{{imageUrl}}registration-phone.png" mode="widthFix"></image>
+    <input focus bindinput='watchPhone' value="{{iphone}}" type="text" placeholder-style="color:#8E8E8E" placeholder="请输入手机号码" class="_input " />
+  </view>
+  <view class="registration-input">
+    <image class="input-left-icon" src="{{imageUrl}}code.png" mode="widthFix"></image>
+    <input  type="text" placeholder-style="color:#8E8E8E" placeholder="请输入图形验证码" bindinput='watchimgcode' value="{{imgcode}}" class="_input " />
+    <!-- <image class='canvas' bindtap='canvascode' src="{{image}}"></image> -->
+     <canvas  class='canvas' canvas-id="canvas" bindtap='changecanvascode'></canvas>
+  </view>
+  <view class="registration-input">
+    <image class="input-left-icon" src="{{imageUrl}}registration-email.png" mode="widthFix"></image>
+    <input bindinput='watchmessagecode' value='{{messagecode}}' type="text" placeholder-style="color:#8E8E8E" placeholder="请输入短信验证码" class="_input " />
+    <button class="input-right-icon get-text-btn" wx:if="{{counts !=0 }}"  plain hover-class="none">{{counts}}秒重新获取</button>
+    <button class="input-right-icon get-code-btn" wx:if="{{counts == 0}}"  plain hover-class="none" bindtap='getcode'>获取验证码</button>
+  </view>
+  <view class=" next">
+    <!-- <navigator url="../registration-perfect/registration-perfect" hover-class="none" class="_navigator "> -->
+      <button class="_button " bindtap='nexttap'>下一步</button>
+    <!-- </navigator> -->
+  </view>
+</view>

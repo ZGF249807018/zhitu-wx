@@ -1,0 +1,138 @@
+<view class="postInvite">
+  <view class="postInvite-title  postInvite-input">向候选人发送面试邀请</view>
+  <view class="postInvite-name postInvite-input">
+    <view class="postInvite-name-left">
+      <text>候选人姓名</text>
+      <text>*</text>
+    </view>
+    <view>
+      <input type="text" placeholder-class="placeholder" placeholder="请输入候选人姓名" bindinput="getName" />
+    </view>
+  </view>
+  <view class="postInvite-zphone postInvite-input">
+    <view class="postInvite-zphone-left">
+      <text>候选人电话</text>
+      <text>*</text>
+    </view>
+    <view>
+      <input type="text" placeholder-class="placeholder" placeholder="请输入候选人电话" bindinput="getPhone" />
+    </view>
+  </view>
+  <view class="postInvite-email postInvite-input">
+    <view class="postInvite-email-left">
+      <text>候选人邮箱</text>
+      <text></text>
+    </view>
+    <view>
+      <input type="text" placeholder-class="placeholder" placeholder="请输入候选人邮箱" bindinput="getEmail" />
+    </view>
+  </view>
+  <view class="postInvite-time postInvite-input">
+    <view class="postInvite-time-left">
+      <text>面试时间</text>
+      <text>*</text>
+    </view>
+    <view class="postInvite-time-right selectDate">
+
+      <!-- <picker bindchange="getTime" value="{{ time }}" mode="date" start="1978-01-01">
+        <text class="{{ time ? 'input' :'' }}">{{ time || '选择日期' }}-</text>
+      </picker>
+      <picker bindchange="getTimes" value="{{ times }}" mode="time" >
+        <text class="{{ times ? 'input' :'' }}">{{ times || '选择时间' }}</text>
+        <image src="{{ https +'more-big.png' }}" mode="scaleToFill" />
+      </picker> -->
+      <picker mode="multiSelector" value="{{dateTime}}" bindchange="getTime" bindcolumnchange="getTimes" range="{{dateTimeArray}}">
+        <view class="tui-picker-detail">
+          <view wx:if="{{dateTimeTitle}}">
+          </view>
+          <view class='pick-time'>
+           <text wx:if="{{dateTimeTitle}}"> {{ dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}</text>
+            <text wx:if="{{!dateTimeTitle}}">请选择面试时间</text>
+            <image src="{{ https + 'more-big.png' }}" mode="aspectFit" lazyLoad='true' />
+          </view>
+
+        </view>
+      </picker>
+
+
+
+      <!-- <input type="text"  placeholder-class="placeholder"  placeholder="请选择面试时间"  value="{{ time }}"/> -->
+      <!-- <image src="{{ https + 'more-big.png' }}" mode="aspectFit" lazyLoad= 'true'  /> -->
+    </view>
+  </view>
+  <view class="postInvite-address postInvite-input">
+    <view class="postInvite-address-left">
+      <text>面试地点</text>
+      <text>*</text>
+    </view>
+    <view>
+      <input type="text" placeholder-class="placeholder" placeholder="请输入面试地点" bindinput="getAddress" />
+    </view>
+  </view>
+  <view class="postInvite-phoneWho postInvite-input">
+    <view class="postInvite-phoneWho-left">
+      <text>联系人</text>
+      <text>*</text>
+    </view>
+    <view>
+      <input type="text" placeholder-class="placeholder" placeholder="请输入招聘专员姓名" bindinput="getContacts" />
+    </view>
+  </view>
+  <view class="postInvite-phone postInvite-input">
+    <view class="postInvite-phone-left">
+      <text>联系方式</text>
+      <text>*</text>
+    </view>
+    <view>
+      <input type="number" placeholder-class="placeholder" placeholder="请输入招聘专员电话" bindinput="getContactsPhone" />
+    </view>
+  </view>
+  <view class="postInvite-message">
+    <view>1.填写基本信息，自动生成面试邀请，发送给候选人。</view>
+    <view>2.候选人可通过邀请里附带链接填写求职登记表，提交后可在人才库里查看。</view>
+    <image src="{{ https+'yaoqing.png' }}" mode="scaleToFill" lazyLoad='true' class="postInvite-message-image" />
+  </view>
+</view>
+<view class="btn">
+  <view bindtap="openModal">查看邀请</view>
+  <view bindtap='send'>立即发送</view>
+</view>
+
+<modal hidden="{{modalOpened}}" bindconfirm="onModalClick" bindcancel="onModalClose" className="moadal">
+  <view class="postInvite-modal">
+    <view class="postInvite-modal-header">{{ company }}面试邀请</view>
+    <view class="postInvite-modal-message modal-p">{{ name }}先生/女士，您好!</view>
+    <view class="postInvite-modal-message modal-p" style="text-indent: 40rpx;">
+      很高兴收阅您的应聘简历，感谢您对我公司的信任和选择。您的简历已经通过我公司的初步筛选，为了促进双方的进一步了解，诚邀请您到我公司参加面试。面谈具体事宜安排如下：
+    </view>
+    <view class="postInvite-modal-content">
+      <view class="postInvite-modal-content-time modal-p">
+        <text>面试时间：</text>
+        <text>{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}</text>
+        <!-- :{{dateTimeArray[5][dateTime[5]]}} -->
+      </view>
+      <view class="postInvite-modal-content-address modal-p">
+        <text>面试地点：</text>
+        <text>{{ address }}</text>
+      </view>
+      <view class="postInvite-modal-content-phoneWho modal-p">
+        <text>联系人： </text>
+        <text>{{ contacts }}</text>
+      </view>
+      <view class="postInvite-modal-content-phone modal-p">
+        <text>联系电话： </text>
+        <text>{{ contactsPhone }}</text>
+      </view>
+      <view class="postInvite-modal-content-needData modal-p">
+        <text>需携带资料： </text>
+        <text>身份证、简历、学历学位证书、职业资格证书、其他能表现您个人能力及业绩的材料</text>
+      </view>
+    </view>
+    <view class="postInvite-modal-prompt modal-p">
+      <text style='color:#F5402D'>特别提示：</text>
+      <text>为了调高双方效率，请点击</text>
+      <text style='color:#4A90E2'> http://zhiyao.recruit.com </text>
+      <text>填写应聘登记表</text>
+    </view>
+  </view>
+</modal>

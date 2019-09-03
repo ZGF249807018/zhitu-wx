@@ -1,0 +1,28 @@
+<view class='order-detail'>
+  <view class='order-detail-head'>
+      <view class='order-detail-head-left'>
+          <view>{{orderdetail.status}}</view>
+          <!-- <view>预计关闭时间 : 2018–8-30 18:07:56</view> -->
+      </view>
+      <view class='order-detail-head-right'>
+          <image src="{{imageUrl}}not-pay.png"></image>
+      </view>
+  </view>
+  <view class='order-detail-center'>
+      <view>{{orderdetail.packageName}}</view>
+      <view>{{orderdetail.packageInfo.description||""}}</view>
+  </view>
+  <view class='order-detail-bottom'>
+      <view class='order-detail-bottom-child' wx:for="{{basicmessage}}"  wx:for-item="itemName" wx:key="index">
+          <view>{{itemName.jobs}}</view>
+          <view>
+              <text>{{itemName.name}}</text>
+              <text>{{itemName.tel}}</text>
+              <text>{{itemName.position}}</text>
+          </view>
+      </view>
+  </view>
+  <view wx:if="{{orderdetail.status=='待支付'}}" class='tabbar'  bindtap='orderpay' data-content='{{orderdetail}}'>
+      <view>立即支付</view>
+  </view>
+</view>

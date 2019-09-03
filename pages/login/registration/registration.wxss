@@ -1,0 +1,83 @@
+.registration {
+  position: relative;
+  font-size: 28rpx;
+}
+
+.registration .registration-input {
+  position: relative;
+  padding: 0 30rpx;
+  margin-top: 50rpx;
+}
+
+.registration .registration-input .input-left-icon {
+  position: absolute;
+  left: 46rpx;
+  top: 50%;
+  width: 48rpx;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+
+.registration .registration-input .input-right-icon {
+  position: absolute;
+  right: 100rpx;
+  top: 50%;
+  width: 30rpx;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+
+.registration .registration-input .get-code-btn {
+  width: 196rpx;
+  color: #2da0f4;
+  border: none;
+  font-size: 28rpx;
+  position: absolute;
+  right: 20rpx;
+  z-index: 5;
+}
+.registration .registration-input .get-text-btn{
+  width: 230rpx;
+  color: #999;
+  border: none;
+  font-size: 28rpx;
+  position: absolute;
+  right: 20rpx;
+  z-index: 5;
+}
+
+.registration .registration-input ._input {
+  font-size: 28rpx;
+  display: block;
+  border-bottom: 1px solid #e0e0e0;
+  height: 90rpx;
+  line-height: 90rpx;
+  padding: 0 50rpx 0 90rpx;
+}
+
+.registration .next ._button {
+  background-color: #2da0f4;
+  border-color: #2da0f4;
+  font-size: 36rpx;
+  color: #fff;
+  width: 550rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 88rpx;
+  margin: 0 auto;
+  margin-top: 426rpx;
+  -webkit-box-shadow: 0px 10rpx 30rpx 0px rgba(45, 160, 244, 0.3);
+  box-shadow: 0px 10rpx 30rpx 0px rgba(45, 160, 244, 0.3);
+}
+
+.canvas {
+  width: 150rpx;
+  height: 60rpx;
+  position: absolute;
+  z-index: 999;
+  right:50rpx;
+  top: 0rpx;
+  /* border: 1px solid black */
+}

@@ -1,0 +1,25 @@
+<view class='chance-contact'>
+  <view class='inputcont'>
+    <view class='chance-contact-head'>
+      <text>原手机号码:</text>
+      <text>{{ tenantList.mobile }}</text>
+    </view>
+  </view>
+  <view class='inputbord'>
+    <view></view>
+  </view>
+  <view class='inputcont inputcont-second'>
+    <input bindinput="getPhoneCode" placeholder='请输入验证码' value='{{inputcontentpassword}}' placeholder-class="placeholderStyle"></input>
+    <text wx:if="{{counts !=0 }}" class='code-text'>{{counts}}秒重新获取</text>
+    <text bindtap='getpassword' wx:if="{{counts == 0}}">获取验证码</text>
+  </view>
+  <view class='inputbord'>
+    <view></view>
+  </view>
+  <view class='inputcont inputcont-second'>
+    <input bindinput="getNowPhone" placeholder='请输入新的手机号码' value='{{inputcontenttel}}' placeholder-class="placeholderStyle"></input>
+  </view>
+  <view class='ok'>
+    <view bindtap='submit'>确定</view>
+  </view>
+</view>

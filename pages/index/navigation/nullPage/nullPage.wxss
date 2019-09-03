@@ -1,0 +1,36 @@
+page {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.nullPage {
+  width: 100%;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nullPage image {
+  height: 716rpx;
+}
+
+.nullPage button {
+  width: 550rpx;
+  height: 88rpx;
+  margin-top: 90rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #c3c3c3;
+  font-size: 36rpx;
+  border-radius: 50rpx;
+  border: 2rpx solid #e0e0e0;
+  background: white;
+}
